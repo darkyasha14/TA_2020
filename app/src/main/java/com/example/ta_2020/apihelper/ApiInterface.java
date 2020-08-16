@@ -13,6 +13,7 @@ import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 import retrofit2.http.Path;
@@ -31,6 +32,15 @@ public interface ApiInterface {
                                        @Field("username") String username,
                                        @Field("email") String email,
                                        @Field("password") String password);
+
+    @FormUrlEncoded
+    @PUT("user/{id}")
+    Call<ResponseBody> updateUser(@Header("Authorization") String token,
+                                  @Path("id") int id,
+                                  @Field("name") String name,
+                                  @Field("username") String username,
+                                  @Field("password") String password,
+                                  @Field("email") String email);
 
 
 
