@@ -1,0 +1,2 @@
+rootProject.name='TA_2020'
+include ':app'
