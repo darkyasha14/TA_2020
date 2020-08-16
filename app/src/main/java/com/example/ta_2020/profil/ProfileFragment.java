@@ -1,26 +1,37 @@
 package com.example.ta_2020.profil;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.example.ta_2020.PrefManager;
 import com.example.ta_2020.R;
+import com.example.ta_2020.apihelper.ApiInterface;
+import com.example.ta_2020.apihelper.UtilsApi;
+import com.example.ta_2020.modal.EmailModal;
 import com.example.ta_2020.modal.NameModal;
 import com.example.ta_2020.modal.PasswordModal;
 import com.example.ta_2020.modal.PhoneModal;
 import com.example.ta_2020.modal.UsernameModal;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -28,20 +39,33 @@ import butterknife.BindView;
  */
 public class ProfileFragment extends Fragment {
 
+
+    ApiInterface apiInterface;
+    PrefManager prefManager;
     @BindView(R.id.ivUser)
     ImageView ivUser;
+    @BindView(R.id.tvName)
+    TextView tvName;
     @BindView(R.id.tvUsername)
     TextView tvUsername;
+    @BindView(R.id.cvUsername)
+    CardView cvUsername;
     @BindView(R.id.tvEmail)
     TextView tvEmail;
+    @BindView(R.id.cvEmaik)
+    CardView cvEmaik;
     @BindView(R.id.tvPhone)
     TextView tvPhone;
+    @BindView(R.id.cvPhone)
+    CardView cvPhone;
     @BindView(R.id.tvPasswd)
     TextView tvPasswd;
+    @BindView(R.id.cvPasswd)
+    CardView cvPasswd;
     @BindView(R.id.tvAbout)
     TextView tvAbout;
-    TextView tvName;
-    CardView cvUsername, cvEmail, cvPhone, cvPasswd, cvAbout;
+    @BindView(R.id.cvAbout)
+    CardView cvAbout;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -53,51 +77,87 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profil, container, false);
+        apiInterface = UtilsApi.getApiService();
+        prefManager = new PrefManager(view.getContext());
+        ButterKnife.bind(this, view);
 
-        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
-        cvUsername= view.findViewById(R.id.cvUsername);
-        cvEmail= view.findViewById(R.id.cvEmaik);
-        cvPhone= view.findViewById(R.id.cvPhone);
-        cvPasswd= view.findViewById(R.id.cvPasswd);
-        tvName= view.findViewById(R.id.tvName);
-
-        cvUsername.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UsernameModal dialog = new UsernameModal();
-                dialog.show(getFragmentManager(),"UsernameModal");
-            }
-        });
-        cvEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NameModal dialog = new NameModal();
-                dialog.show(getFragmentManager(),"NameModal");
-            }
-        });
-        cvPasswd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PasswordModal dialog = new PasswordModal();
-                dialog.show(getFragmentManager(),"PasswordModal");
-            }
-        });
-        cvPhone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PhoneModal dialog = new PhoneModal();
-                dialog.show(getFragmentManager(),"PhoneModal");
-            }
-        });
-
-        tvName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NameModal dialog = new NameModal();
-                dialog.show(getFragmentManager(),"NameModal");
-            }
-        });
+        initGetUserProfile();
         return view;
+    }
+
+    private void initGetUserProfile() {
+        apiInterface.getUserData(prefManager.getTokenUser(),
+                prefManager.getId()).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body().string());
+                        if (jsonObject.getString("code").equals("0")) {
+                            JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                            JSONObject jsonObject2 = jsonObject1.getJSONObject("User");
+                            tvName.setText(jsonObject2.getString("name"));
+                            tvUsername.setText(jsonObject2.getString("username"));
+                            tvEmail.setText(jsonObject2.getString("email"));
+                            if (jsonObject1.getString("phone").equals("null")){
+                                tvPhone.setText("update phone number");
+                            }else{
+                                tvPhone.setText(jsonObject1.getString("phone"));
+                            }
+
+                            cvUsername.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    UsernameModal dialog = new UsernameModal();
+                                    dialog.show(getFragmentManager(), "UsernameModal");
+                                }
+                            });
+                            cvEmaik.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    EmailModal dialog = new EmailModal();
+                                    dialog.show(getFragmentManager(), "NameModal");
+                                }
+                            });
+                            cvPasswd.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    PasswordModal dialog = new PasswordModal();
+                                    dialog.show(getFragmentManager(), "PasswordModal");
+                                }
+                            });
+                            cvPhone.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    PhoneModal dialog = new PhoneModal();
+                                    dialog.show(getFragmentManager(), "PhoneModal");
+                                }
+                            });
+
+                            tvName.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    NameModal dialog = new NameModal();
+                                    dialog.show(getFragmentManager(), "NameModal");
+                                }
+                            });
+
+                        } else {
+                            Toast.makeText(getContext(), "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(getContext(), "Internet Problem", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

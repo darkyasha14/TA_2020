@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity {
                             prefManager.saveSession();
                             prefManager.spString(PrefManager.SP_TOKEN_USER, jsonObject.getString("token"));
                             prefManager.spInt(PrefManager.SP_ID, auth.getUser_id());
+                            Toast.makeText(context, "" + prefManager.getTokenUser(), Toast.LENGTH_SHORT).show();
                             Toast.makeText(context, "welcome " + data.getString("name"), Toast.LENGTH_SHORT).show();
                             moveToMain();
                         } else {
@@ -127,4 +128,15 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(register);
     }
 
+    @Override
+    protected void onStart() {
+        PrefManager prefManager = new PrefManager(this);
+        boolean userId = prefManager.getSession();
+        if (userId) {
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+        super.onStart();
+    }
 }

@@ -42,6 +42,14 @@ public interface ApiInterface {
                                   @Field("password") String password,
                                   @Field("email") String email);
 
+    @GET("profil/{id}")
+    Call<ResponseBody> getUserData(@Header("Authorization") String token,
+                                   @Path("id") int id);
 
+    @Multipart
+    @PUT("update-profil/{id}")
+    Call<ResponseBody> updatePhone(@HeaderMap Map<String, String> stringStringMap,
+                                   @PartMap Map<String, RequestBody> stringBody,
+                                   @Part MultipartBody.Part filePart);
 
 }
