@@ -63,10 +63,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (TextUtils.isEmpty(etUsername.getText().toString())) {
-                    etUsername.setError("Please input Username");
+                    etUsername.setError("Please Input Username");
                     return;
                 } else if (TextUtils.isEmpty(etPassword.getText().toString())) {
-                    etPassword.setError("Please input Password");
+                    etPassword.setError("Please Input Password");
                     return;
                 } else {
                     performLogin();
