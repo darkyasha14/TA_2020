@@ -53,9 +53,9 @@
             android:id="@+id/recyclerGroup"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/ll1"
-            android:layout_marginTop="20dp"
-            android:scrollbars="none"></androidx.recyclerview.widget.RecyclerView>
+            android:background="#E5E3E3"
+            android:scrollbars="none"
+            tools:listitem="@layout/row_item_group"/>
     </com.google.android.material.appbar.AppBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
