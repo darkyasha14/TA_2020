@@ -52,4 +52,7 @@ public interface ApiInterface {
                                    @PartMap Map<String, RequestBody> stringBody,
                                    @Part MultipartBody.Part filePart);
 
+    @GET("category")
+    Call<ResponseBody> getCategory(@Header("Authorization") String token);
+
 }
