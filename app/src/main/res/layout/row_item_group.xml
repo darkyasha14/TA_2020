@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="0dp"
+    android:elevation="0dp"
+    android:layout_marginBottom="10dp"
+    app:layout_goneMarginTop="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Category Name"
+            android:id="@+id/tvCategoryName"
+            android:textColor="#22D114"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvGroup"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/tvCategoryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            tools:listitem="@layout/row_item"
+            tools:itemCount="3"
+            android:layout_marginTop="5dp"
+            android:scrollbars="none" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
