@@ -20,7 +20,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/htab_collapse_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="200dp"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
@@ -45,17 +45,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="top"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="20dp"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>z
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerGroup"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#E5E3E3"
-            android:scrollbars="none"
-            tools:listitem="@layout/row_item_group"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#F7F6F6"
+                android:scrollbars="none"
+                android:layout_marginBottom="30dp"
+                tools:listitem="@layout/row_item_group"/>
     </com.google.android.material.appbar.AppBarLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
