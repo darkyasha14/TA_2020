@@ -1,5 +1,8 @@
 package com.example.ta_2020.profil;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +18,7 @@ import com.example.ta_2020.PrefManager;
 import com.example.ta_2020.R;
 import com.example.ta_2020.apihelper.ApiInterface;
 import com.example.ta_2020.apihelper.UtilsApi;
+import com.example.ta_2020.auth.LoginActivity;
 import com.example.ta_2020.modal.EmailModal;
 import com.example.ta_2020.modal.NameModal;
 import com.example.ta_2020.modal.PasswordModal;
@@ -67,6 +71,8 @@ public class ProfileFragment extends Fragment {
     @BindView(R.id.cvAbout)
     CardView cvAbout;
 
+    CardView cvExit;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -76,11 +82,44 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profil, container, false);
+        final View view = inflater.inflate(R.layout.fragment_profil, container, false);
         apiInterface = UtilsApi.getApiService();
         prefManager = new PrefManager(view.getContext());
         ButterKnife.bind(this, view);
 
+        cvExit = view.findViewById(R.id.cvExit);
+
+        cvExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setMessage("Are you sure?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                PrefManager prefManager = new PrefManager(view.getContext());
+                                prefManager.removeSession();
+                                prefManager.spString(PrefManager.SP_TOKEN_USER, "");
+                                prefManager.spInt(PrefManager.SP_ID, -1);
+                                getActivity().finish();
+                                Intent intent = new Intent(view.getContext(), LoginActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+            }
+        });
 
         initGetUserProfile();
         return view;
