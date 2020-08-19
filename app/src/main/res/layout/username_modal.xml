@@ -22,12 +22,11 @@
         android:layout_height="wrap_content"/>
     <EditText
         android:id="@+id/editNama"
-        android:hint="johndoe"
         android:layout_marginHorizontal="25dp"
         android:padding="14dp"
         android:singleLine="true"
         android:maxLength="50"
-        android:background="#CAD8C9 "
+        android:background="#F4F4F4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
