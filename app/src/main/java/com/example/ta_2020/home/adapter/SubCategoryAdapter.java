@@ -1,6 +1,7 @@
 package com.example.ta_2020.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.ta_2020.R;
+import com.example.ta_2020.home.JasaSelectedActivity;
 import com.example.ta_2020.home.model.Category;
 
 import java.util.List;
@@ -38,7 +40,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull vHolder holder, int position) {
+    public void onBindViewHolder(@NonNull vHolder holder, final int position) {
         holder.txtNameRow.setText(subCategories.get(position).getSub_category_name());
         Glide.with(context)
                 .load(subCategories.get(position).getImg_url())
@@ -47,7 +49,10 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
         holder.cardViewRow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(context, JasaSelectedActivity.class);
+                intent.putExtra("eNAME", subCategories.get(position).getSub_category_name());
+                intent.putExtra("eID", subCategories.get(position).getSub_category_id());
+                context.startActivity(intent);
             }
         });
 
