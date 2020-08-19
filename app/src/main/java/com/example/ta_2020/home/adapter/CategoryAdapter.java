@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ta_2020.R;
@@ -41,7 +42,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.vHolde
       List<Category.DataBean.SubCategoriesBean> subCategories = categories.get(position).getSub_categories();
       SubCategoryAdapter subCategoryAdapter = new SubCategoryAdapter(context, subCategories);
       holder.rvGroup.setAdapter(subCategoryAdapter);
-      holder.rvGroup.setLayoutManager(new GridLayoutManager(context, 2));
+      holder.rvGroup.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
       holder.rvGroup.setHasFixedSize(true);
       holder.rvGroup.setNestedScrollingEnabled(false);
 

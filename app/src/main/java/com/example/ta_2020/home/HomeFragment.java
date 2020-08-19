@@ -1,6 +1,8 @@
 package com.example.ta_2020.home;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -62,6 +64,12 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getActivity().getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+
         context = view.getContext();
         apiHelper = UtilsApi.getApiService();
         recyclerView = view.findViewById(R.id.recyclerGroup);
@@ -80,7 +88,7 @@ public class HomeFragment extends Fragment {
                 if (response.isSuccessful()) {
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
-                        if (jsonObject.getString("code").equals("1")) {
+                        if (jsonObject.getString("code").equals("0")) {
 
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
 
@@ -96,7 +104,7 @@ public class HomeFragment extends Fragment {
                             recyclerView.setLayoutManager(new LinearLayoutManager(context));
                             recyclerView.setHasFixedSize(true);
                         } else {
-                            Toast.makeText(context, "404", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
