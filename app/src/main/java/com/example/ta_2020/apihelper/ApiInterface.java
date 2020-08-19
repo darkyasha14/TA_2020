@@ -55,4 +55,10 @@ public interface ApiInterface {
     @GET("category")
     Call<ResponseBody> getCategory(@Header("Authorization") String token);
 
+    @GET("sub-category/{id}")
+    Call<ResponseBody> getJasa(@Header("Authorization") String token,
+                               @Path("id") int id);
+
+
+
 }
