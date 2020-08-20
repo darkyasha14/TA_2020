@@ -58,7 +58,15 @@ public interface ApiInterface {
     @GET("sub-category/{id}")
     Call<ResponseBody> getJasa(@Header("Authorization") String token,
                                @Path("id") int id);
+    @FormUrlEncoded
+    @POST("booking")
+    Call<ResponseBody> makeOrder(@Header("Authorization") String token,
+                                 @Field("user_id") int idUser,
+                                 @Field("jasa_id") int idJasa);
 
+    @GET("booking-list/{id}")
+    Call<ResponseBody> getBookingList(@Header("Authorization") String token,
+                                      @Path("id") int id);
 
 
 }
