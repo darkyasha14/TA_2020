@@ -93,11 +93,11 @@ public class JasaSelectedActivity extends AppCompatActivity {
                 if (flags) {
                     MakeOrderModal orderModalSheet = new MakeOrderModal();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", idJasaSelected);
+                    bundle.putInt("idJasa", idJasaSelected);
                     orderModalSheet.setArguments(bundle);
                     orderModalSheet.show(getSupportFragmentManager(), "");
                 } else {
-                    Toast.makeText(JasaSelectedActivity.this, "Product jasa tidak ada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(JasaSelectedActivity.this, "Jasa not found", Toast.LENGTH_SHORT).show();
                 }
             }
         });
