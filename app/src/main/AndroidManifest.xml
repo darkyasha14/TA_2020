@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".home.JasaSelectedActivity"></activity>
+        <activity android:name=".order.TransactionComplateActivity"></activity>
+        <activity android:name=".order.ConfirmPaymentActivity" />
+        <activity android:name=".order.BookingDetailActivity" />
+        <activity android:name=".home.JasaSelectedActivity" />
         <activity android:name=".auth.LoginActivity" />
         <activity android:name=".auth.CheckEmailActivity" />
         <activity android:name=".auth.RegisterActivity" />
