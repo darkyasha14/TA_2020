@@ -77,7 +77,7 @@ public class ActiveFragment extends Fragment {
 
                              dataBeans = new ArrayList<>();
                              Gson gson = new Gson();
-                             for (int i = 0; i < jsonArray.length(); i++){
+                             for (int i = jsonArray.length() - 1; i>=0; i--){
                                  BookingList.DataBean dataBean = gson.fromJson(jsonArray.getJSONObject(i).toString(), BookingList.DataBean.class);
                                  dataBeans.add(dataBean);
                              }
