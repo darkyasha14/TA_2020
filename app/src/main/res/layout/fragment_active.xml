@@ -9,7 +9,6 @@
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:layout_weight="1"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -34,40 +33,8 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvOrderList"
             android:layout_width="match_parent"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
             android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
-    <LinearLayout
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.cardview.widget.CardView
-            app:cardBackgroundColor="#F5F5F5"
-            android:layout_width="match_parent"
-            app:cardElevation="0dp"
-            app:cardCornerRadius="0dp"
-            android:layout_height="40dp">
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
-                <TextView
-                    android:text="Complate"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="15dp"
-                    android:layout_centerVertical="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvComplateList"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
 
-    </LinearLayout>
 
 </LinearLayout>
