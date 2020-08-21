@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvOrder"
+        app:cardElevation="0dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="15dp">
+                <TextView
+                    android:id="@+id/tvKodep"
+                    android:layout_margin="3dp"
+                    android:paddingTop="3dp"
+                    android:text="Invoice no"
+                    android:textSize="11dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvKode"
+                    android:layout_toEndOf="@id/tvKodep"
+                    android:layout_margin="3dp"
+                    android:paddingTop="3dp"
+                    android:text="invoice"
+                    android:textSize="11dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+                <Button
+                    android:id="@+id/btnWait"
+                    android:text="COMPLATE"
+                    android:textSize="10dp"
+                    android:textColor="@color/colorText"
+                    android:background="@drawable/btn_bg"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"/>
+            </RelativeLayout>
+            <!--        <View-->
+            <!--            android:background="#F1F0F0"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:elevation="0dp"-->
+            <!--            android:layout_marginTop="7dp"-->
+            <!--            android:layout_marginHorizontal="15dp"-->
+            <!--            android:layout_height="1dp">-->
+            <!--        </View>-->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="15dp">
+                <TextView
+                    android:id="@+id/tvMotode"
+                    android:layout_margin="2dp"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:textColor="#000"
+                    android:text="Jasa Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+                <TextView
+                    android:id="@+id/tvTipe"
+                    android:layout_margin="2dp"
+                    android:text="Sub Name"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginHorizontal="15dp"
+                android:paddingBottom="10dp">
+                <TextView
+                    android:id="@+id/tvTimeNDate"
+                    android:layout_margin="2dp"
+                    android:textSize="10dp"
+                    android:text="10 FEB 2020  14:30 WIB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <View
+        android:layout_below="@id/cvOrder"
+        android:background="#ECEAEA"
+        android:layout_width="match_parent"
+        android:elevation="0dp"
+        android:layout_height="1dp">
+    </View>
+
+</LinearLayout>
