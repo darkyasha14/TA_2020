@@ -87,21 +87,6 @@ public class JasaSelectedActivity extends AppCompatActivity {
 
         fetchJasa(intent);
 
-        btnOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (flags) {
-                    MakeOrderModal orderModalSheet = new MakeOrderModal();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("idJasa", idJasaSelected);
-                    orderModalSheet.setArguments(bundle);
-                    orderModalSheet.show(getSupportFragmentManager(), "");
-                } else {
-                    Toast.makeText(JasaSelectedActivity.this, "Jasa not found", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
 
     }
 
@@ -143,6 +128,21 @@ public class JasaSelectedActivity extends AppCompatActivity {
                             rvJasa.setHasFixedSize(true);
                             rvJasa.setLayoutManager(new LinearLayoutManager(context));
                             rvJasa.setNestedScrollingEnabled(false);
+
+                            btnOrder.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if (flags) {
+                                        MakeOrderModal orderModalSheet = new MakeOrderModal();
+                                        Bundle bundle = new Bundle();
+                                        bundle.putInt("idJasa", idJasaSelected);
+                                        orderModalSheet.setArguments(bundle);
+                                        orderModalSheet.show(getSupportFragmentManager(), "");
+                                    } else {
+                                        Toast.makeText(JasaSelectedActivity.this, "Jasa not found", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
