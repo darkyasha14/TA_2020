@@ -68,5 +68,27 @@ public interface ApiInterface {
     Call<ResponseBody> getBookingList(@Header("Authorization") String token,
                                       @Path("id") int id);
 
+    @GET("booking-detail/{invoice_no}")
+    Call<ResponseBody> getBookingDetail(@Header("Authorization") String token,
+                                        @Path("invoice_no") String id);
+
+    @FormUrlEncoded
+    @POST("payment")
+    Call<ResponseBody> getPaymentMethod(@Header("Authorization") String token,
+                                        @Field("user_id") int idUser,
+                                        @Field("invoice_no") String id);
+
+    @GET("transaction-complate-list/{id}")
+    Call<ResponseBody> getTransactionComplateList(@Header("Authorization") String token,
+                                                  @Path("id") int id);
+
+    @GET("transaction-complate-detail/{invoice_no}")
+    Call<ResponseBody> getTransactionComplateDetail(@Header("Authorization") String token,
+                                                    @Path("invoice_no") String id);
+
+
+
+
+
 
 }
