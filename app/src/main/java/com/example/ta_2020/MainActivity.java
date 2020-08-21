@@ -1,12 +1,18 @@
 package com.example.ta_2020;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -21,6 +27,11 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    private int STORAGE_PERMISSION_CODE = 1;
+
+    private boolean doubleBack;
+    private Toast backToast;
+
     @BindView(R.id.fragment_container)
     FrameLayout fragmentContainer;
     @BindView(R.id.bottom_navigation)
@@ -34,6 +45,22 @@ public class MainActivity extends AppCompatActivity {
 
         initBottomView();
 
+        if (ContextCompat.checkSelfPermission(getApplicationContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+            requestStoragePermission();
+        }
+
+    }
+
+    private void requestStoragePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)) {
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
+        }
     }
 
     private void initBottomView() {
@@ -96,5 +123,25 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.setPrimaryNavigationFragment(fragmentTemp);
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.commitNowAllowingStateLoss();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBack) {
+            backToast.cancel();
+            super.onBackPressed();
+            moveTaskToBack(true);
+        } else {
+            backToast = Toast.makeText(this, "Press back againt to exit ", Toast.LENGTH_SHORT);
+            backToast.show();
+            doubleBack = true;
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doubleBack = false;
+                }
+            }, 2000);
+        }
     }
 }
