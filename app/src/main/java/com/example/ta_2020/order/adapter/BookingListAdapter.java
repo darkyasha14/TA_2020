@@ -12,6 +12,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ta_2020.R;
+import com.example.ta_2020.home.JasaSelectedActivity;
+import com.example.ta_2020.order.BookingDetailActivity;
 import com.example.ta_2020.order.model.BookingList;
 
 import java.util.List;
@@ -37,7 +39,7 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull vHolder vholder, int i) {
+    public void onBindViewHolder(@NonNull vHolder vholder, final int i) {
         vholder.tvKode.setText("#"+dataBeans.get(i).getInvoice_no());
         vholder.tvMotode.setText(dataBeans.get(i).getJasa().getJasa_name());
         vholder.tvTipe.setText(dataBeans.get(i).getJasa().getSub_category().getSub_category_name());
@@ -46,6 +48,9 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListAdapter.
         vholder.cvOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(context, BookingDetailActivity.class);
+                intent.putExtra("eINVOICE", dataBeans.get(i).getInvoice_no());
+                context.startActivity(intent);
 
             }
         });
