@@ -87,6 +87,14 @@ public interface ApiInterface {
                                                     @Path("invoice_no") String id);
 
 
+    @Multipart
+    @POST("confirm-payment")
+    Call<ResponseBody> requestConfirmPayment(@HeaderMap Map<String, String> stringHeader,
+                                             @PartMap Map<String, RequestBody> stringBody,
+                                             @Part MultipartBody.Part photo
+    );
+
+
 
 
 
