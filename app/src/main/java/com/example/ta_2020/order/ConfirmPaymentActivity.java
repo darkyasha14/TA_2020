@@ -10,8 +10,10 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -70,24 +72,18 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
     @BindView(R.id.relativeBottom)
     RelativeLayout relativeBottom;
 
-    private int STORAGE_PERMISSION_CODE = 1;
-
-    ImageButton ibPhoto;
+    ImageView ibPhoto;
 
     ApiInterface apiInterface;
     PrefManager prefManager;
     Context context;
 
     Toolbar toolbar;
-    Calendar calendar, calender1;
+    Calendar calendar;
     DatePickerDialog dialog;
-    Time time;
-    TimePickerDialog dialog1;
     Context mContext = this;
 
     private static final int CAMERA_REQUEST = 1888;
-
-    Bitmap selectedImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +91,7 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_c_onfirm_payment);
         ButterKnife.bind(this);
 
-        ibPhoto=findViewById(R.id.ibPhoto);
+        ibPhoto=findViewById(R.id.idPhoto);
 
         apiInterface = UtilsApi.getApiService();
         prefManager = new PrefManager(this);
@@ -105,6 +101,32 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 takeImage();
+            }
+        });
+
+        txtFormDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calendar = Calendar.getInstance();
+                final int day = calendar.get(Calendar.DAY_OF_MONTH);
+                final int month = calendar.get(Calendar.MONTH);
+                final int year = calendar.get(Calendar.YEAR);
+
+                dialog = new DatePickerDialog(ConfirmPaymentActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        String bulan = "" + i1;
+                        String tgl = "" + i2;
+                        if (i1 < 10) {
+                            bulan = "0" + (i1 + 1);
+                        }
+                        if (i2 < 10) {
+                            tgl = "0" + i2;
+                        }
+                        txtFormDate.setText(i + "-" + bulan + "-" + tgl);
+                    }
+                }, year, month, day);
+                dialog.show();
             }
         });
 
@@ -180,6 +202,8 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
                                     intent.putExtra("FLAGPAGE", 1);
                                     startActivity(intent);
                                     finish();
+                                }else {
+                                    Toast.makeText(mContext, "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
