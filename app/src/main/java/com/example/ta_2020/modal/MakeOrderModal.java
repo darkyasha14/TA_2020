@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -61,8 +62,8 @@ public class MakeOrderModal extends BottomSheetDialogFragment {
     }
 
     private void makeOrder() {
-        Intent intent = getActivity().getIntent();
-        final int idjasa =  intent.getIntExtra("idJasa", 1);
+        Bundle bundle = getArguments();
+        final int idjasa =  bundle.getInt("idJasa", 1);
         apiInterface.makeOrder(prefManager.getTokenUser(), prefManager.getId(), idjasa).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
