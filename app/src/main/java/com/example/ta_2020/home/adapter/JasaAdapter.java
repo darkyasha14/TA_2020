@@ -2,12 +2,14 @@ package com.example.ta_2020.home.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,6 +69,7 @@ public class JasaAdapter extends RecyclerView.Adapter<JasaAdapter.vHolder> {
         if (position == 0 && lastSelectedPosition == -1){
             holder.chk.setChecked(true);
             productJasaInterface.onItemClick(position, true);
+            Log.i("TAG", "onBindViewHolder: "+dataBeans.get(position).getJasa_id());
         }
 
     }
