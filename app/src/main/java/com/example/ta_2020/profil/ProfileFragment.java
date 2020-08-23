@@ -23,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import androidx.loader.content.CursorLoader;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.ta_2020.MainActivity;
 import com.example.ta_2020.PrefManager;
 import com.example.ta_2020.R;
@@ -170,6 +171,8 @@ public class ProfileFragment extends Fragment {
                             Glide
                                     .with(context)
                                     .load(jsonObject1.getString("user_img"))
+                                    .skipMemoryCache(true)
+                                    .diskCacheStrategy(DiskCacheStrategy.NONE)
                                     .into(ivUser);
 
                             if (jsonObject1.getString("phone").equals("null")) {
