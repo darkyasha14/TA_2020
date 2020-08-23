@@ -47,8 +47,8 @@ public interface ApiInterface {
                                    @Path("id") int id);
 
     @Multipart
-    @PUT("update-profil/{id}")
-    Call<ResponseBody> updatePhone(@HeaderMap Map<String, String> stringStringMap,
+    @PUT("update-profil")
+    Call<ResponseBody> updateProfile(@HeaderMap Map<String, String> stringStringMap,
                                    @PartMap Map<String, RequestBody> stringBody,
                                    @Part MultipartBody.Part filePart);
 

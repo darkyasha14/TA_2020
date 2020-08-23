@@ -1,19 +1,29 @@
 package com.example.ta_2020.profil;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.loader.content.CursorLoader;
 
+import com.bumptech.glide.Glide;
+import com.example.ta_2020.MainActivity;
 import com.example.ta_2020.PrefManager;
 import com.example.ta_2020.R;
 import com.example.ta_2020.apihelper.ApiInterface;
@@ -28,10 +38,17 @@ import com.example.ta_2020.modal.UsernameModal;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,8 +63,7 @@ public class ProfileFragment extends Fragment {
 
     ApiInterface apiInterface;
     PrefManager prefManager;
-    @BindView(R.id.ivUser)
-    ImageView ivUser;
+
     @BindView(R.id.tvName)
     TextView tvName;
     @BindView(R.id.tvUsername)
@@ -71,7 +87,17 @@ public class ProfileFragment extends Fragment {
     @BindView(R.id.cvAbout)
     CardView cvAbout;
 
+    Uri mImageUri;
+    String imagePath;
+    String nomerHp;
+
     CardView cvExit;
+    Context context;
+
+    private static final int PICK_IMAGE_REQUEST = 1;
+    @BindView(R.id.ivUser)
+    CircleImageView ivUser;
+
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -86,6 +112,7 @@ public class ProfileFragment extends Fragment {
         apiInterface = UtilsApi.getApiService();
         prefManager = new PrefManager(view.getContext());
         ButterKnife.bind(this, view);
+        context = getContext();
 
         cvExit = view.findViewById(R.id.cvExit);
 
@@ -104,7 +131,7 @@ public class ProfileFragment extends Fragment {
                                 prefManager.spInt(PrefManager.SP_ID, -1);
                                 getActivity().finish();
                                 Intent intent = new Intent(view.getContext(), LoginActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
 
                             }
@@ -139,10 +166,18 @@ public class ProfileFragment extends Fragment {
                             tvName.setText(jsonObject2.getString("name"));
                             tvUsername.setText(jsonObject2.getString("username"));
                             tvEmail.setText(jsonObject2.getString("email"));
-                            if (jsonObject1.getString("phone").equals("null")){
+
+                            Glide
+                                    .with(context)
+                                    .load(jsonObject1.getString("user_img"))
+                                    .into(ivUser);
+
+                            if (jsonObject1.getString("phone").equals("null")) {
                                 tvPhone.setText("update phone number");
-                            }else{
+                                nomerHp = "";
+                            } else {
                                 tvPhone.setText(jsonObject1.getString("phone"));
+                                nomerHp = jsonObject1.getString("phone");
                             }
 
                             cvUsername.setOnClickListener(new View.OnClickListener() {
@@ -182,6 +217,13 @@ public class ProfileFragment extends Fragment {
                                 }
                             });
 
+                            ivUser.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    openFileChooser();
+                                }
+                            });
+
                         } else {
                             Toast.makeText(getContext(), "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                         }
@@ -198,5 +240,97 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(getContext(), "Internet Problem", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void openFileChooser() {
+        final CharSequence[] options = {"Choose from Gallery", "Cancel"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Add Photo");
+
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (options[i].equals("Choose from Gallery")) {
+                    Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                    photoPickerIntent.setType("image/*");
+                    startActivityForResult(photoPickerIntent, PICK_IMAGE_REQUEST);
+
+                } else if (options[i].equals("Cancel")) {
+                    dialogInterface.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
+
+    private String getRealPathFromUri(Uri uri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        CursorLoader loader = new CursorLoader(getContext(), uri, projection, null, null, null);
+        Cursor cursor = loader.loadInBackground();
+        int column_idx = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String result = cursor.getString(column_idx);
+        cursor.close();
+        return result;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK) {
+            mImageUri = data.getData();
+
+            imagePath = getRealPathFromUri(mImageUri);
+
+            updateImage();
+        }
+    }
+
+    private void updateImage() {
+        Map<String, String> map = new HashMap<>();
+        map.put("Authorization", prefManager.getTokenUser());
+
+        Map<String, RequestBody> bodyMap = new HashMap<>();
+        bodyMap.put("user_id", createPartFromString(prefManager.getId() + ""));
+        bodyMap.put("phone", createPartFromString(nomerHp));
+
+        File file = new File(imagePath);
+        RequestBody propertyImage = RequestBody.create(MediaType.parse("multipart/from-data"), file);
+        MultipartBody.Part propertyImagePart = MultipartBody.Part.createFormData("user_img", file.getName(), propertyImage);
+
+        apiInterface.updateProfile(map, bodyMap, propertyImagePart).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body().string());
+                        if (jsonObject.getString("code").equals("0")) {
+                            Toast.makeText(context, "Success update image", Toast.LENGTH_SHORT).show();
+                            Intent intent1 = new Intent(getContext(), MainActivity.class);
+                            intent1.putExtra("FLAGPAGE", 2);
+                            startActivity(intent1);
+                            getActivity().finish();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "Internet Problem", Toast.LENGTH_SHORT).show();
+                Log.d("TAG", "onFailure: " + t.getMessage() + " " + t.getStackTrace());
+            }
+        });
+
+    }
+
+    @NonNull
+    private RequestBody createPartFromString(String descriptionString) {
+        return RequestBody.create(
+                MediaType.parse("text/plain"), descriptionString);
     }
 }
