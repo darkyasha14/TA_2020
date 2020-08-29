@@ -29,7 +29,7 @@
                 android:id="@+id/htab_header"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/kagura"
+                android:background="@drawable/jump"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseParallaxMultiplier="0.75"
