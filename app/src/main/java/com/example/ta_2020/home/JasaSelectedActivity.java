@@ -21,9 +21,7 @@ import com.example.ta_2020.apihelper.UtilsApi;
 import com.example.ta_2020.home.adapter.JasaAdapter;
 import com.example.ta_2020.home.model.Jasa;
 import com.example.ta_2020.interfaces.ProductJasaInterface;
-import com.example.ta_2020.modal.MakeOrderModal;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -132,12 +130,16 @@ public class JasaSelectedActivity extends AppCompatActivity {
                             btnOrder.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
+
                                     if (flags) {
-                                        MakeOrderModal orderModalSheet = new MakeOrderModal();
-                                        Bundle bundle = new Bundle();
-                                        bundle.putInt("idJasa", idJasaSelected);
-                                        orderModalSheet.setArguments(bundle);
-                                        orderModalSheet.show(getSupportFragmentManager(), "");
+//                                        MakeOrderModal orderModalSheet = new MakeOrderModal();
+//                                        Bundle bundle = new Bundle();
+//                                        bundle.putInt("idJasa", idJasaSelected);
+//                                        orderModalSheet.setArguments(bundle);
+//                                        orderModalSheet.show(getSupportFragmentManager(), "");
+                                        Intent intent = new Intent(getApplicationContext(), MakeOrderActivity.class);
+                                        intent.putExtra("idJasa", idJasaSelected);
+                                        startActivity(intent);
                                     } else {
                                         Toast.makeText(JasaSelectedActivity.this, "Jasa not found", Toast.LENGTH_SHORT).show();
                                     }
