@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.example.ta_2020.MainActivity;
 import com.example.ta_2020.PrefManager;
 import com.example.ta_2020.R;
 import com.example.ta_2020.apihelper.ApiInterface;
@@ -26,6 +28,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -89,6 +93,7 @@ public class BookingDetailActivity extends AppCompatActivity {
                                 JSONObject jsonObject = new JSONObject(response.body().string());
                                 if (jsonObject.getString("code").equals("0")){
                                     Toast.makeText(context, "please check your email", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(), PaymentMethodActivity.class));
                                 }else {
                                     Toast.makeText(context, "we have been send payment method to your email", Toast.LENGTH_SHORT).show();
                                 }
@@ -132,6 +137,12 @@ public class BookingDetailActivity extends AppCompatActivity {
                             JSONObject data = jsonObject.getJSONObject("data");
                             txtCodeBooking.setText("#"+data.getString("invoice_no"));
 
+                            String hour = data.getString("createdAt").substring(11, 13);
+                            String menit = data.getString("createdAt").substring(14, 16);
+                            String detik = data.getString("createdAt").substring(17, 19);
+                            int totalDetikOrder = (Integer.parseInt(hour) * 3600) + (Integer.parseInt(menit) * 60) + Integer.parseInt(detik);
+                            countdownPayment(totalDetikOrder);
+
                             tvPrice.setText((NumberFormat.getCurrencyInstance(new Locale("in", "ID")).format(data.getJSONObject("Jasa").getInt("jasa_price"))+ ""));
                             tvSubName.setText(data.getJSONObject("Jasa").getJSONObject("Sub_category").getString("sub_category_name"));
                             txtCategory.setText(data.getJSONObject("Jasa").getJSONObject("Sub_category").getJSONObject("Category").getString("category_name"));
@@ -156,5 +167,47 @@ public class BookingDetailActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void countdownPayment(int totalDetikOrder) {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        String date = simpleDateFormat.format(calendar.getTime());
+        String hour1 = date.substring(0, 2);
+        String menit1 = date.substring(3, 5);
+        String detik1 = date.substring(6);
+        int totalDetikOrderNow = (Integer.parseInt(hour1) * 3600) + (Integer.parseInt(menit1) * 60) + Integer.parseInt(detik1);
+        if (totalDetikOrderNow < totalDetikOrder) {
+            totalDetikOrderNow += 86400;
+        }
+        int total = (totalDetikOrderNow - totalDetikOrder);
+
+        new CountDownTimer(2100000 - (total * 1000), 1000) {
+
+            public void onTick(long millisUntilFinished) {
+
+                long i = millisUntilFinished;
+                updateTime(i);
+                //here you can have your logic to set text to edittext
+            }
+
+            private void updateTime(long i) {
+                int minute = (int) i / 60000;
+                int secons = (int) i % 60000 / 1000;
+
+                String timerLeft = "" + minute;
+                timerLeft += ":";
+                if (secons < 10) timerLeft += "0";
+                timerLeft += secons;
+                txtCoundown.setText(timerLeft);
+
+
+            }
+
+            public void onFinish() {
+                txtCoundown.setText("Finish!");
+            }
+
+        }.start();
     }
 }
