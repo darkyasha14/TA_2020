@@ -7,7 +7,7 @@ public class TransactionComplate {
     /**
      * code : 0
      * message : successs get data transaction complate by ID
-     * data : [{"transactionCom_id":1,"user_id":2,"invoice_no":"082177","conf_payment_id":1,"createdAt":"2020-08-21T13:04:04.000Z","updatedAt":"2020-08-21T13:04:04.000Z","Booking":{"invoice_no":"082177","user_id":2,"jasa_id":2,"payment_status":"PAID","createdAt":"2020-08-21T08:03:18.000Z","updatedAt":"2020-08-21T13:04:04.000Z","Jasa":{"jasa_id":2,"sub_category_id":1,"jasa_name":"jasa test 2","jasa_desc":"test desc 123","jasa_price":10000,"createdAt":"2020-08-17T15:44:08.000Z","updatedAt":"2020-08-17T15:44:08.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"sub category 1","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-17T15:39:39.000Z","Category":{"category_id":1,"category_name":"CATEGORY 1","category_desc":"test desc","createdAt":"2020-08-17T15:37:30.000Z","updatedAt":"2020-08-17T15:37:30.000Z"}}}},"ConPayment":{"conf_payment_id":1,"name":"testname","email":"app@app.com","payment_date":"2012-01-01T00:00:00.000Z","total_price":2738,"payment_method":"bni","invoice_no":"082177","description":"test desc","img_pay":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/082177.png","createdAt":"2020-08-21T13:02:27.000Z","updatedAt":"2020-08-21T13:02:27.000Z"},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankr14","password":"12345678","email":"harneti09@gmail.com","token_text":null,"is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-15T18:09:45.000Z","Profil":{"profil_id":2,"user_id":2,"phone":null,"user_img":null,"createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-15T18:04:48.000Z"}}}]
+     * data : [{"transactionCom_id":1,"user_id":2,"invoice_no":"082177","conf_payment_id":1,"createdAt":"2020-08-21T13:04:04.000Z","updatedAt":"2020-08-21T13:04:04.000Z","Booking":{"invoice_no":"082177","user_id":2,"jasa_id":2,"payment_status":"PAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-21T08:03:18.000Z","updatedAt":"2020-08-21T13:04:04.000Z","Jasa":{"jasa_id":2,"sub_category_id":1,"jasa_name":"Repair","jasa_desc":"test desc 123","jasa_price":200000,"createdAt":"2020-08-17T15:44:08.000Z","updatedAt":"2020-08-29T12:00:31.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z","Category":{"category_id":1,"category_name":"ELECTRONIC","category_desc":"test desc","createdAt":"2020-08-17T15:37:30.000Z","updatedAt":"2020-08-29T11:52:46.000Z"}}}},"ConPayment":{"conf_payment_id":1,"name":"testname","email":"app@app.com","payment_date":"2012-01-01T00:00:00.000Z","total_price":2738,"payment_method":"bni","invoice_no":"082177","description":"test desc","img_pay":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/082177.png","createdAt":"2020-08-21T13:02:27.000Z","updatedAt":"2020-08-21T13:02:27.000Z"},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"transactionCom_id":3,"user_id":2,"invoice_no":"082964","conf_payment_id":11,"createdAt":"2020-08-29T12:14:18.000Z","updatedAt":"2020-08-29T12:14:18.000Z","Booking":{"invoice_no":"082964","user_id":2,"jasa_id":2,"payment_status":"PAID","booking_expired":false,"booking_expired_date":"2020-08-29T13:06:57.000Z","createdAt":"2020-08-29T12:06:57.000Z","updatedAt":"2020-08-29T12:14:18.000Z","Jasa":{"jasa_id":2,"sub_category_id":1,"jasa_name":"Repair","jasa_desc":"test desc 123","jasa_price":200000,"createdAt":"2020-08-17T15:44:08.000Z","updatedAt":"2020-08-29T12:00:31.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z","Category":{"category_id":1,"category_name":"ELECTRONIC","category_desc":"test desc","createdAt":"2020-08-17T15:37:30.000Z","updatedAt":"2020-08-29T11:52:46.000Z"}}}},"ConPayment":{"conf_payment_id":11,"name":"testname","email":"app@app.com","payment_date":"2012-01-01T00:00:00.000Z","total_price":2738,"payment_method":"bni","invoice_no":"082964","description":"test desc","img_pay":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/082964.png","createdAt":"2020-08-29T12:13:21.000Z","updatedAt":"2020-08-29T12:13:21.000Z"},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"transactionCom_id":2,"user_id":2,"invoice_no":"082340","conf_payment_id":9,"createdAt":"2020-08-23T13:42:52.000Z","updatedAt":"2020-08-23T13:42:52.000Z","Booking":{"invoice_no":"082340","user_id":2,"jasa_id":14,"payment_status":"PAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-23T10:16:26.000Z","updatedAt":"2020-08-23T13:42:52.000Z","Jasa":{"jasa_id":14,"sub_category_id":9,"jasa_name":"name4","jasa_desc":"test desc","jasa_price":10008,"createdAt":"2020-08-17T15:49:43.000Z","updatedAt":"2020-08-17T15:49:43.000Z","Sub_category":{"sub_category_id":9,"category_id":2,"sub_category_name":"Car","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-t2.png","createdAt":"2020-08-17T15:41:53.000Z","updatedAt":"2020-08-29T11:57:45.000Z","Category":{"category_id":2,"category_name":"MECHANIC","category_desc":"test desc","createdAt":"2020-08-17T15:37:58.000Z","updatedAt":"2020-08-29T11:56:58.000Z"}}}},"ConPayment":{"conf_payment_id":9,"name":"an ji **","email":"email@app.com","payment_date":"2020-08-22T17:00:00.000Z","total_price":63738,"payment_method":"farhan bci","invoice_no":"082340","description":"ini desc","img_pay":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/082340.png","createdAt":"2020-08-23T13:41:41.000Z","updatedAt":"2020-08-23T13:41:41.000Z"},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}}]
      */
 
     private int code;
@@ -46,9 +46,9 @@ public class TransactionComplate {
          * conf_payment_id : 1
          * createdAt : 2020-08-21T13:04:04.000Z
          * updatedAt : 2020-08-21T13:04:04.000Z
-         * Booking : {"invoice_no":"082177","user_id":2,"jasa_id":2,"payment_status":"PAID","createdAt":"2020-08-21T08:03:18.000Z","updatedAt":"2020-08-21T13:04:04.000Z","Jasa":{"jasa_id":2,"sub_category_id":1,"jasa_name":"jasa test 2","jasa_desc":"test desc 123","jasa_price":10000,"createdAt":"2020-08-17T15:44:08.000Z","updatedAt":"2020-08-17T15:44:08.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"sub category 1","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-17T15:39:39.000Z","Category":{"category_id":1,"category_name":"CATEGORY 1","category_desc":"test desc","createdAt":"2020-08-17T15:37:30.000Z","updatedAt":"2020-08-17T15:37:30.000Z"}}}}
+         * Booking : {"invoice_no":"082177","user_id":2,"jasa_id":2,"payment_status":"PAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-21T08:03:18.000Z","updatedAt":"2020-08-21T13:04:04.000Z","Jasa":{"jasa_id":2,"sub_category_id":1,"jasa_name":"Repair","jasa_desc":"test desc 123","jasa_price":200000,"createdAt":"2020-08-17T15:44:08.000Z","updatedAt":"2020-08-29T12:00:31.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z","Category":{"category_id":1,"category_name":"ELECTRONIC","category_desc":"test desc","createdAt":"2020-08-17T15:37:30.000Z","updatedAt":"2020-08-29T11:52:46.000Z"}}}}
          * ConPayment : {"conf_payment_id":1,"name":"testname","email":"app@app.com","payment_date":"2012-01-01T00:00:00.000Z","total_price":2738,"payment_method":"bni","invoice_no":"082177","description":"test desc","img_pay":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/082177.png","createdAt":"2020-08-21T13:02:27.000Z","updatedAt":"2020-08-21T13:02:27.000Z"}
-         * User : {"user_id":2,"name":"irfan kurniawan","username":"irfankr14","password":"12345678","email":"harneti09@gmail.com","token_text":null,"is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-15T18:09:45.000Z","Profil":{"profil_id":2,"user_id":2,"phone":null,"user_img":null,"createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-15T18:04:48.000Z"}}
+         * User : {"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}
          */
 
         private int transactionCom_id;
@@ -139,15 +139,19 @@ public class TransactionComplate {
              * user_id : 2
              * jasa_id : 2
              * payment_status : PAID
+             * booking_expired : false
+             * booking_expired_date : null
              * createdAt : 2020-08-21T08:03:18.000Z
              * updatedAt : 2020-08-21T13:04:04.000Z
-             * Jasa : {"jasa_id":2,"sub_category_id":1,"jasa_name":"jasa test 2","jasa_desc":"test desc 123","jasa_price":10000,"createdAt":"2020-08-17T15:44:08.000Z","updatedAt":"2020-08-17T15:44:08.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"sub category 1","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-17T15:39:39.000Z","Category":{"category_id":1,"category_name":"CATEGORY 1","category_desc":"test desc","createdAt":"2020-08-17T15:37:30.000Z","updatedAt":"2020-08-17T15:37:30.000Z"}}}
+             * Jasa : {"jasa_id":2,"sub_category_id":1,"jasa_name":"Repair","jasa_desc":"test desc 123","jasa_price":200000,"createdAt":"2020-08-17T15:44:08.000Z","updatedAt":"2020-08-29T12:00:31.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z","Category":{"category_id":1,"category_name":"ELECTRONIC","category_desc":"test desc","createdAt":"2020-08-17T15:37:30.000Z","updatedAt":"2020-08-29T11:52:46.000Z"}}}
              */
 
             private String invoice_no;
             private int user_id;
             private int jasa_id;
             private String payment_status;
+            private boolean booking_expired;
+            private Object booking_expired_date;
             private String createdAt;
             private String updatedAt;
             private JasaBean Jasa;
@@ -184,6 +188,22 @@ public class TransactionComplate {
                 this.payment_status = payment_status;
             }
 
+            public boolean isBooking_expired() {
+                return booking_expired;
+            }
+
+            public void setBooking_expired(boolean booking_expired) {
+                this.booking_expired = booking_expired;
+            }
+
+            public Object getBooking_expired_date() {
+                return booking_expired_date;
+            }
+
+            public void setBooking_expired_date(Object booking_expired_date) {
+                this.booking_expired_date = booking_expired_date;
+            }
+
             public String getCreatedAt() {
                 return createdAt;
             }
@@ -212,12 +232,12 @@ public class TransactionComplate {
                 /**
                  * jasa_id : 2
                  * sub_category_id : 1
-                 * jasa_name : jasa test 2
+                 * jasa_name : Repair
                  * jasa_desc : test desc 123
-                 * jasa_price : 10000
+                 * jasa_price : 200000
                  * createdAt : 2020-08-17T15:44:08.000Z
-                 * updatedAt : 2020-08-17T15:44:08.000Z
-                 * Sub_category : {"sub_category_id":1,"category_id":1,"sub_category_name":"sub category 1","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-17T15:39:39.000Z","Category":{"category_id":1,"category_name":"CATEGORY 1","category_desc":"test desc","createdAt":"2020-08-17T15:37:30.000Z","updatedAt":"2020-08-17T15:37:30.000Z"}}
+                 * updatedAt : 2020-08-29T12:00:31.000Z
+                 * Sub_category : {"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z","Category":{"category_id":1,"category_name":"ELECTRONIC","category_desc":"test desc","createdAt":"2020-08-17T15:37:30.000Z","updatedAt":"2020-08-29T11:52:46.000Z"}}
                  */
 
                 private int jasa_id;
@@ -297,12 +317,12 @@ public class TransactionComplate {
                     /**
                      * sub_category_id : 1
                      * category_id : 1
-                     * sub_category_name : sub category 1
+                     * sub_category_name : AC
                      * sub_category_desc : test desc
                      * img_url : https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png
                      * createdAt : 2020-08-17T15:39:39.000Z
-                     * updatedAt : 2020-08-17T15:39:39.000Z
-                     * Category : {"category_id":1,"category_name":"CATEGORY 1","category_desc":"test desc","createdAt":"2020-08-17T15:37:30.000Z","updatedAt":"2020-08-17T15:37:30.000Z"}
+                     * updatedAt : 2020-08-29T11:53:06.000Z
+                     * Category : {"category_id":1,"category_name":"ELECTRONIC","category_desc":"test desc","createdAt":"2020-08-17T15:37:30.000Z","updatedAt":"2020-08-29T11:52:46.000Z"}
                      */
 
                     private int sub_category_id;
@@ -381,10 +401,10 @@ public class TransactionComplate {
                     public static class CategoryBean {
                         /**
                          * category_id : 1
-                         * category_name : CATEGORY 1
+                         * category_name : ELECTRONIC
                          * category_desc : test desc
                          * createdAt : 2020-08-17T15:37:30.000Z
-                         * updatedAt : 2020-08-17T15:37:30.000Z
+                         * updatedAt : 2020-08-29T11:52:46.000Z
                          */
 
                         private int category_id;
@@ -557,15 +577,14 @@ public class TransactionComplate {
             /**
              * user_id : 2
              * name : irfan kurniawan
-             * username : irfankr14
+             * username : irfankurniawan
              * password : 12345678
              * email : harneti09@gmail.com
-             * token_text : null
              * is_login : true
              * is_admin : false
              * createdAt : 2020-08-15T18:04:47.000Z
-             * updatedAt : 2020-08-15T18:09:45.000Z
-             * Profil : {"profil_id":2,"user_id":2,"phone":null,"user_img":null,"createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-15T18:04:48.000Z"}
+             * updatedAt : 2020-08-24T06:14:33.000Z
+             * Profil : {"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}
              */
 
             private int user_id;
@@ -573,7 +592,6 @@ public class TransactionComplate {
             private String username;
             private String password;
             private String email;
-            private Object token_text;
             private boolean is_login;
             private boolean is_admin;
             private String createdAt;
@@ -620,14 +638,6 @@ public class TransactionComplate {
                 this.email = email;
             }
 
-            public Object getToken_text() {
-                return token_text;
-            }
-
-            public void setToken_text(Object token_text) {
-                this.token_text = token_text;
-            }
-
             public boolean isIs_login() {
                 return is_login;
             }
@@ -672,16 +682,16 @@ public class TransactionComplate {
                 /**
                  * profil_id : 2
                  * user_id : 2
-                 * phone : null
-                 * user_img : null
+                 * phone : 0987645
+                 * user_img : https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png
                  * createdAt : 2020-08-15T18:04:48.000Z
-                 * updatedAt : 2020-08-15T18:04:48.000Z
+                 * updatedAt : 2020-08-24T06:15:10.000Z
                  */
 
                 private int profil_id;
                 private int user_id;
-                private Object phone;
-                private Object user_img;
+                private String phone;
+                private String user_img;
                 private String createdAt;
                 private String updatedAt;
 
@@ -701,19 +711,19 @@ public class TransactionComplate {
                     this.user_id = user_id;
                 }
 
-                public Object getPhone() {
+                public String getPhone() {
                     return phone;
                 }
 
-                public void setPhone(Object phone) {
+                public void setPhone(String phone) {
                     this.phone = phone;
                 }
 
-                public Object getUser_img() {
+                public String getUser_img() {
                     return user_img;
                 }
 
-                public void setUser_img(Object user_img) {
+                public void setUser_img(String user_img) {
                     this.user_img = user_img;
                 }
 
