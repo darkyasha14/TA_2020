@@ -64,7 +64,7 @@ public interface ApiInterface {
                                  @Field("user_id") int idUser,
                                  @Field("jasa_id") int idJasa);
 
-    @GET("booking-list/{id}")
+    @GET("booking-list-user/{id}")
     Call<ResponseBody> getBookingList(@Header("Authorization") String token,
                                       @Path("id") int id);
 
@@ -94,7 +94,34 @@ public interface ApiInterface {
                                              @Part MultipartBody.Part photo
     );
 
+    @GET("kota")
+    Call<ResponseBody> getKota();
 
+    @GET("kecamatan/{id}")
+    Call<ResponseBody> getKecamatan(@Path("id") String id
+    );
+
+    @GET("kelurahan/{id}")
+    Call<ResponseBody> getKelurahan(@Path("id") String id
+    );
+
+    @FormUrlEncoded
+    @POST("add-address")
+    Call<ResponseBody> addAddress(@Field("user_id") int userid,
+                                  @Field("kota_id") String kota,
+                                  @Field("kecamatan_id") String kecamatan,
+                                  @Field("kelurahan_id") String kelurahan,
+                                  @Field("detail_address") String address
+    );
+
+//    @GET("address-list")
+//    Call<ResponseBody> getAddress(@Field("user_id") int id
+//    );
+
+    @GET("jasa/{id}")
+    Call<ResponseBody> getjasaDetail(@Header("Authorization") String token,
+                                     @Path("id") int id
+    );
 
 
 
