@@ -7,7 +7,7 @@ public class BookingList {
     /**
      * code : 0
      * message : successs get booking list by user ID
-     * data : [{"invoice_no":"082016","user_id":2,"jasa_id":1,"payment_status":"UNPAID","createdAt":"2020-08-20T07:49:23.000Z","updatedAt":"2020-08-20T07:49:23.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"jasa test 1","jasa_desc":"test desc 123","jasa_price":10000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-17T15:44:00.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"sub category 1","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-17T15:39:39.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankr14","password":"12345678","email":"harneti09@gmail.com","token_text":null,"is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-15T18:09:45.000Z","Profil":{"profil_id":2,"user_id":2,"phone":null,"user_img":null,"createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-15T18:04:48.000Z"}}},{"invoice_no":"082027","user_id":2,"jasa_id":1,"payment_status":"UNPAID","createdAt":"2020-08-20T07:10:03.000Z","updatedAt":"2020-08-20T07:10:03.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"jasa test 1","jasa_desc":"test desc 123","jasa_price":10000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-17T15:44:00.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"sub category 1","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-17T15:39:39.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankr14","password":"12345678","email":"harneti09@gmail.com","token_text":null,"is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-15T18:09:45.000Z","Profil":{"profil_id":2,"user_id":2,"phone":null,"user_img":null,"createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-15T18:04:48.000Z"}}},{"invoice_no":"082093","user_id":2,"jasa_id":1,"payment_status":"UNPAID","createdAt":"2020-08-20T07:45:13.000Z","updatedAt":"2020-08-20T07:45:13.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"jasa test 1","jasa_desc":"test desc 123","jasa_price":10000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-17T15:44:00.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"sub category 1","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-17T15:39:39.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankr14","password":"12345678","email":"harneti09@gmail.com","token_text":null,"is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-15T18:09:45.000Z","Profil":{"profil_id":2,"user_id":2,"phone":null,"user_img":null,"createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-15T18:04:48.000Z"}}}]
+     * data : [{"invoice_no":"082001","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-20T15:51:16.000Z","updatedAt":"2020-08-20T15:51:16.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082016","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-20T07:49:23.000Z","updatedAt":"2020-08-20T07:49:23.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082027","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-20T07:10:03.000Z","updatedAt":"2020-08-20T07:10:03.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082059","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-20T15:57:36.000Z","updatedAt":"2020-08-20T15:57:36.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082063","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-20T15:56:45.000Z","updatedAt":"2020-08-20T15:56:45.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082091","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-20T15:40:38.000Z","updatedAt":"2020-08-20T15:40:38.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082093","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-20T07:45:13.000Z","updatedAt":"2020-08-20T07:45:13.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082099","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-20T15:51:20.000Z","updatedAt":"2020-08-20T15:51:20.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082110","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-21T08:15:36.000Z","updatedAt":"2020-08-21T08:15:36.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082113","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-21T07:52:05.000Z","updatedAt":"2020-08-21T07:52:05.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082138","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-21T04:14:22.000Z","updatedAt":"2020-08-21T04:14:22.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082149","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-21T08:11:54.000Z","updatedAt":"2020-08-21T08:11:54.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082157","user_id":2,"jasa_id":2,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-21T08:17:05.000Z","updatedAt":"2020-08-21T08:17:05.000Z","Jasa":{"jasa_id":2,"sub_category_id":1,"jasa_name":"Repair","jasa_desc":"test desc 123","jasa_price":200000,"createdAt":"2020-08-17T15:44:08.000Z","updatedAt":"2020-08-29T12:00:31.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082172","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-21T07:44:16.000Z","updatedAt":"2020-08-21T07:44:16.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082199","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-21T13:49:06.000Z","updatedAt":"2020-08-21T13:49:06.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082316","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-23T09:00:57.000Z","updatedAt":"2020-08-23T09:00:57.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082320","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-23T09:11:43.000Z","updatedAt":"2020-08-23T09:11:43.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082387","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-23T10:08:35.000Z","updatedAt":"2020-08-23T10:08:35.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082435","user_id":2,"jasa_id":1,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-24T05:11:46.000Z","updatedAt":"2020-08-24T05:11:46.000Z","Jasa":{"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082498","user_id":2,"jasa_id":2,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":null,"createdAt":"2020-08-24T05:45:55.000Z","updatedAt":"2020-08-24T05:45:55.000Z","Jasa":{"jasa_id":2,"sub_category_id":1,"jasa_name":"Repair","jasa_desc":"test desc 123","jasa_price":200000,"createdAt":"2020-08-17T15:44:08.000Z","updatedAt":"2020-08-29T12:00:31.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}},{"invoice_no":"082964","user_id":2,"jasa_id":2,"payment_status":"UNPAID","booking_expired":false,"booking_expired_date":"2020-08-29T13:06:57.000Z","createdAt":"2020-08-29T12:06:57.000Z","updatedAt":"2020-08-29T12:06:57.000Z","Jasa":{"jasa_id":2,"sub_category_id":1,"jasa_name":"Repair","jasa_desc":"test desc 123","jasa_price":200000,"createdAt":"2020-08-17T15:44:08.000Z","updatedAt":"2020-08-29T12:00:31.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}},"User":{"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}}]
      */
 
     private int code;
@@ -40,20 +40,24 @@ public class BookingList {
 
     public static class DataBean {
         /**
-         * invoice_no : 082016
+         * invoice_no : 082001
          * user_id : 2
          * jasa_id : 1
          * payment_status : UNPAID
-         * createdAt : 2020-08-20T07:49:23.000Z
-         * updatedAt : 2020-08-20T07:49:23.000Z
-         * Jasa : {"jasa_id":1,"sub_category_id":1,"jasa_name":"jasa test 1","jasa_desc":"test desc 123","jasa_price":10000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-17T15:44:00.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"sub category 1","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-17T15:39:39.000Z"}}
-         * User : {"user_id":2,"name":"irfan kurniawan","username":"irfankr14","password":"12345678","email":"harneti09@gmail.com","token_text":null,"is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-15T18:09:45.000Z","Profil":{"profil_id":2,"user_id":2,"phone":null,"user_img":null,"createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-15T18:04:48.000Z"}}
+         * booking_expired : false
+         * booking_expired_date : null
+         * createdAt : 2020-08-20T15:51:16.000Z
+         * updatedAt : 2020-08-20T15:51:16.000Z
+         * Jasa : {"jasa_id":1,"sub_category_id":1,"jasa_name":"Installation","jasa_desc":"test desc 123","jasa_price":50000,"createdAt":"2020-08-17T15:44:00.000Z","updatedAt":"2020-08-29T11:59:25.000Z","Sub_category":{"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}}
+         * User : {"user_id":2,"name":"irfan kurniawan","username":"irfankurniawan","password":"12345678","email":"harneti09@gmail.com","is_login":true,"is_admin":false,"createdAt":"2020-08-15T18:04:47.000Z","updatedAt":"2020-08-24T06:14:33.000Z","Profil":{"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}}
          */
 
         private String invoice_no;
         private int user_id;
         private int jasa_id;
         private String payment_status;
+        private boolean booking_expired;
+        private Object booking_expired_date;
         private String createdAt;
         private String updatedAt;
         private JasaBean Jasa;
@@ -89,6 +93,22 @@ public class BookingList {
 
         public void setPayment_status(String payment_status) {
             this.payment_status = payment_status;
+        }
+
+        public boolean isBooking_expired() {
+            return booking_expired;
+        }
+
+        public void setBooking_expired(boolean booking_expired) {
+            this.booking_expired = booking_expired;
+        }
+
+        public Object getBooking_expired_date() {
+            return booking_expired_date;
+        }
+
+        public void setBooking_expired_date(Object booking_expired_date) {
+            this.booking_expired_date = booking_expired_date;
         }
 
         public String getCreatedAt() {
@@ -127,12 +147,12 @@ public class BookingList {
             /**
              * jasa_id : 1
              * sub_category_id : 1
-             * jasa_name : jasa test 1
+             * jasa_name : Installation
              * jasa_desc : test desc 123
-             * jasa_price : 10000
+             * jasa_price : 50000
              * createdAt : 2020-08-17T15:44:00.000Z
-             * updatedAt : 2020-08-17T15:44:00.000Z
-             * Sub_category : {"sub_category_id":1,"category_id":1,"sub_category_name":"sub category 1","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-17T15:39:39.000Z"}
+             * updatedAt : 2020-08-29T11:59:25.000Z
+             * Sub_category : {"sub_category_id":1,"category_id":1,"sub_category_name":"AC","sub_category_desc":"test desc","img_url":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png","createdAt":"2020-08-17T15:39:39.000Z","updatedAt":"2020-08-29T11:53:06.000Z"}
              */
 
             private int jasa_id;
@@ -212,11 +232,11 @@ public class BookingList {
                 /**
                  * sub_category_id : 1
                  * category_id : 1
-                 * sub_category_name : sub category 1
+                 * sub_category_name : AC
                  * sub_category_desc : test desc
                  * img_url : https://darkyasha.goes2nobel.com/TA/back-end/./public/image/sub-category-1.png
                  * createdAt : 2020-08-17T15:39:39.000Z
-                 * updatedAt : 2020-08-17T15:39:39.000Z
+                 * updatedAt : 2020-08-29T11:53:06.000Z
                  */
 
                 private int sub_category_id;
@@ -289,15 +309,14 @@ public class BookingList {
             /**
              * user_id : 2
              * name : irfan kurniawan
-             * username : irfankr14
+             * username : irfankurniawan
              * password : 12345678
              * email : harneti09@gmail.com
-             * token_text : null
              * is_login : true
              * is_admin : false
              * createdAt : 2020-08-15T18:04:47.000Z
-             * updatedAt : 2020-08-15T18:09:45.000Z
-             * Profil : {"profil_id":2,"user_id":2,"phone":null,"user_img":null,"createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-15T18:04:48.000Z"}
+             * updatedAt : 2020-08-24T06:14:33.000Z
+             * Profil : {"profil_id":2,"user_id":2,"phone":"0987645","user_img":"https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png","createdAt":"2020-08-15T18:04:48.000Z","updatedAt":"2020-08-24T06:15:10.000Z"}
              */
 
             private int user_id;
@@ -305,7 +324,6 @@ public class BookingList {
             private String username;
             private String password;
             private String email;
-            private Object token_text;
             private boolean is_login;
             private boolean is_admin;
             private String createdAt;
@@ -352,14 +370,6 @@ public class BookingList {
                 this.email = email;
             }
 
-            public Object getToken_text() {
-                return token_text;
-            }
-
-            public void setToken_text(Object token_text) {
-                this.token_text = token_text;
-            }
-
             public boolean isIs_login() {
                 return is_login;
             }
@@ -404,16 +414,16 @@ public class BookingList {
                 /**
                  * profil_id : 2
                  * user_id : 2
-                 * phone : null
-                 * user_img : null
+                 * phone : 0987645
+                 * user_img : https://darkyasha.goes2nobel.com/TA/back-end/./public/image/irfankurniawan.png
                  * createdAt : 2020-08-15T18:04:48.000Z
-                 * updatedAt : 2020-08-15T18:04:48.000Z
+                 * updatedAt : 2020-08-24T06:15:10.000Z
                  */
 
                 private int profil_id;
                 private int user_id;
-                private Object phone;
-                private Object user_img;
+                private String phone;
+                private String user_img;
                 private String createdAt;
                 private String updatedAt;
 
@@ -433,19 +443,19 @@ public class BookingList {
                     this.user_id = user_id;
                 }
 
-                public Object getPhone() {
+                public String getPhone() {
                     return phone;
                 }
 
-                public void setPhone(Object phone) {
+                public void setPhone(String phone) {
                     this.phone = phone;
                 }
 
-                public Object getUser_img() {
+                public String getUser_img() {
                     return user_img;
                 }
 
-                public void setUser_img(Object user_img) {
+                public void setUser_img(String user_img) {
                     this.user_img = user_img;
                 }
 
