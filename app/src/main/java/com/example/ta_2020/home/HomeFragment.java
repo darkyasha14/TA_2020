@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +24,8 @@ import com.example.ta_2020.apihelper.ApiInterface;
 import com.example.ta_2020.apihelper.UtilsApi;
 import com.example.ta_2020.home.adapter.CategoryAdapter;
 import com.example.ta_2020.home.model.Category;
+import com.example.ta_2020.profil.ProgressDialog;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -53,6 +57,10 @@ public class HomeFragment extends Fragment {
 
     ApiInterface apiHelper;
 
+    ProgressDialog progressDialog;
+
+    Toolbar toolbar;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -70,11 +78,17 @@ public class HomeFragment extends Fragment {
             getActivity().getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
+
+
         context = view.getContext();
         apiHelper = UtilsApi.getApiService();
         recyclerView = view.findViewById(R.id.recyclerGroup);
 
         prefManager = new PrefManager(view.getContext());
+
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.showDialog();
         
         fetchCategory();
         
@@ -89,6 +103,7 @@ public class HomeFragment extends Fragment {
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
                         if (jsonObject.getString("code").equals("0")) {
+                            progressDialog.hideDialog();
 
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
 
@@ -104,6 +119,7 @@ public class HomeFragment extends Fragment {
                             recyclerView.setLayoutManager(new LinearLayoutManager(context));
                             recyclerView.setHasFixedSize(true);
                         } else {
+                            progressDialog.hideDialog();
                             Toast.makeText(context, "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
@@ -113,6 +129,7 @@ public class HomeFragment extends Fragment {
                     }
                 } else {
                     try {
+                        progressDialog.hideDialog();
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
                         Toast.makeText(context, "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
@@ -125,6 +142,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                progressDialog.hideDialog();
 
             }
         });
