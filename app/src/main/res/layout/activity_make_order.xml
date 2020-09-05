@@ -7,31 +7,50 @@
     tools:context=".home.MakeOrderActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarFormAddress"
+        android:id="@+id/toolbarOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white" />
 
     <LinearLayout
-        android:layout_below="@id/toolbarFormAddress"
+        android:layout_below="@id/toolbarOrder"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:drawableLeft="@drawable/ic_baseline_insert_photo_24"
-            android:text="Shipping Address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/ivLoc"
+                android:src="@drawable/ic_baseline_location_on_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="Shipping Address"
+                android:layout_marginTop="3dp"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/ivLoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
         <TextView
             android:id="@+id/tvAddress"
-            android:text="detail \nkelurahan \nkecamatan \nkota"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="20dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:text="............ \n...............\n......... \n.............................."
+            android:paddingVertical="10dp"
+            android:paddingLeft="30dp"
             android:textColor="#000000"
-            android:drawableRight="@drawable/ic_baseline_insert_photo_24"
+            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
             android:textSize="13dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:background="#C2C2C2"
+            android:layout_marginHorizontal="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.7dp"/>
         <androidx.cardview.widget.CardView
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
@@ -47,39 +66,50 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </androidx.cardview.widget.CardView>
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
+            app:cardElevation="0dp"
+            app:cardCornerRadius="5dp"
             android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/ivSub"
-                android:layout_marginHorizontal="10dp"
-                android:src="@color/cardview_shadow_start_color"
-                android:layout_width="80dp"
-                android:layout_height="80dp"/>
-            <TextView
-                android:id="@+id/tvSubName"
-                android:layout_toRightOf="@id/ivSub"
-                android:text="Sub Category Name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/tvJasa"
-                android:layout_marginTop="13dp"
-                android:layout_below="@id/tvSubName"
-                android:layout_toRightOf="@id/ivSub"
-                android:text="Jasa Name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/tvPrice"
-                android:layout_marginTop="13dp"
-                android:layout_below="@id/tvJasa"
-                android:layout_toRightOf="@id/ivSub"
-                android:text="Rp. Price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/ivSub"
+                    android:layout_marginVertical="10dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:src="@color/cardview_shadow_start_color"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"/>
+                <TextView
+                    android:id="@+id/tvSubName"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/ivSub"
+                    android:text="Sub Category Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvJasa"
+                    android:layout_marginTop="13dp"
+                    android:layout_below="@id/tvSubName"
+                    android:layout_toRightOf="@id/ivSub"
+                    android:text="Jasa Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_marginTop="13dp"
+                    android:layout_below="@id/tvJasa"
+                    android:layout_toRightOf="@id/ivSub"
+                    android:text="Rp. Price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
     </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
