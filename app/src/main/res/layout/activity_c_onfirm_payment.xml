@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="false"
+    android:focusableInTouchMode="true"
     tools:context=".order.ConfirmPaymentActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarFormPemesanan"
+        android:id="@+id/toolbarCon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         />
 
     <ScrollView
-        android:layout_below="@id/toolbarFormPemesanan"
+        android:layout_below="@id/toolbarCon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/relativeBottom"
