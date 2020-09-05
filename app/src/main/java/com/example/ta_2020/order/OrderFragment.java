@@ -44,7 +44,7 @@ public class OrderFragment extends Fragment {
 
         PagerOrderAdapter adapter = new PagerOrderAdapter(getChildFragmentManager());
         adapter.addFrag(new ActiveFragment(), "ORDER");
-        adapter.addFrag(new ComplateFragment(), "COMPLATE");
+        adapter.addFrag(new ComplateFragment(), "COMPLETE");
         viewPager.setAdapter(adapter);
     }
 }
