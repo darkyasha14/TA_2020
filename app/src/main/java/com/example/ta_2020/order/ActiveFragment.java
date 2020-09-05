@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.ta_2020.PrefManager;
 import com.example.ta_2020.R;
@@ -17,6 +18,7 @@ import com.example.ta_2020.apihelper.ApiInterface;
 import com.example.ta_2020.apihelper.UtilsApi;
 import com.example.ta_2020.order.adapter.BookingListAdapter;
 import com.example.ta_2020.order.model.BookingList;
+import com.example.ta_2020.profil.ProgressDialog;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -46,6 +48,8 @@ public class ActiveFragment extends Fragment {
 
     PrefManager prefManager;
 
+    ProgressDialog progressDialog;
+
     List<BookingList.DataBean> dataBeans;
 
     public ActiveFragment() {
@@ -63,21 +67,24 @@ public class ActiveFragment extends Fragment {
         context=view.getContext();
         apiInterface = UtilsApi.getApiService();
 
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.showDialog();
 
          prefManager = new PrefManager(view.getContext());
 
          apiInterface.getBookingList(prefManager.getTokenUser(), prefManager.getId()).enqueue(new Callback<ResponseBody>() {
              @Override
              public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                 if (response.isSuccessful()){
+                 if (response.isSuccessful()) {
                      try {
                          JSONObject jsonObject = new JSONObject(response.body().string());
-                         if (jsonObject.getString("code").equals("0")){
+                         if (jsonObject.getString("code").equals("0")) {
+                             progressDialog.hideDialog();
                              JSONArray jsonArray = jsonObject.getJSONArray("data");
 
                              dataBeans = new ArrayList<>();
                              Gson gson = new Gson();
-                             for (int i = jsonArray.length() - 1; i>=0; i--){
+                             for (int i = jsonArray.length() - 1; i >= 0; i--) {
                                  BookingList.DataBean dataBean = gson.fromJson(jsonArray.getJSONObject(i).toString(), BookingList.DataBean.class);
                                  dataBeans.add(dataBean);
                              }
@@ -93,11 +100,23 @@ public class ActiveFragment extends Fragment {
                      } catch (IOException e) {
                          e.printStackTrace();
                      }
+                 } else {
+                     try {
+                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
+                         Toast.makeText(context, "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                         progressDialog.hideDialog();
+                     } catch (JSONException e) {
+                         e.printStackTrace();
+                     } catch (IOException e) {
+                         e.printStackTrace();
+
+                     }
                  }
              }
 
              @Override
              public void onFailure(Call<ResponseBody> call, Throwable t) {
+                 progressDialog.hideDialog();
 
              }
          });
