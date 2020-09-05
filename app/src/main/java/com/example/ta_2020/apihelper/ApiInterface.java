@@ -114,9 +114,9 @@ public interface ApiInterface {
                                   @Field("detail_address") String address
     );
 
-//    @GET("address-list")
-//    Call<ResponseBody> getAddress(@Field("user_id") int id
-//    );
+    @GET("address-list/{id}")
+    Call<ResponseBody> getAddress(@Path("id") int id
+    );
 
     @GET("jasa/{id}")
     Call<ResponseBody> getjasaDetail(@Header("Authorization") String token,
