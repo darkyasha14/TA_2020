@@ -6,8 +6,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".order.OrderFragment">
 
+    <RelativeLayout
+        android:id="@+id/rvStatusBar"
+        android:background="@color/colorText"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"/>
+
     <LinearLayout
-        android:layout_marginTop="5dp"
+        android:layout_below="@id/rvStatusBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
