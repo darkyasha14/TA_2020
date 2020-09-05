@@ -19,6 +19,7 @@ import com.example.ta_2020.R;
 import com.example.ta_2020.apihelper.ApiInterface;
 import com.example.ta_2020.apihelper.UtilsApi;
 import com.example.ta_2020.auth.model.Auth;
+import com.example.ta_2020.profil.ProgressDialog;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -44,11 +45,15 @@ public class LoginActivity extends AppCompatActivity {
     ApiInterface apiInterface;
     Context context;
 
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        progressDialog = new ProgressDialog(this);
 
         apiInterface = UtilsApi.getApiService();
         context = this;
@@ -69,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
                     etPassword.setError("Please Input Password");
                     return;
                 } else {
+                    progressDialog.showDialog();
                     performLogin();
                 }
             }
@@ -98,6 +104,13 @@ public class LoginActivity extends AppCompatActivity {
                             moveToMain();
                         } else {
                             Toast.makeText(context, "" + jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.hideDialog();
+                                }
+                            }, 1000);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -105,22 +118,31 @@ public class LoginActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 } else {
+                    progressDialog.hideDialog();
                     Toast.makeText(context, "Member Password Not Match", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                progressDialog.hideDialog();
                 Toast.makeText(context, "Koneksi internet bermasalah", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     private void moveToMain() {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-        finish();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.hideDialog();
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        }, 1000);
     }
 
     public void Register(View view) {
