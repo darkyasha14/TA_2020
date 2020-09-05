@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -59,8 +60,6 @@ import retrofit2.Response;
 
 public class ConfirmPaymentActivity extends AppCompatActivity {
 
-    @BindView(R.id.toolbarFormPemesanan)
-    Toolbar toolbarFormPemesanan;
     @BindView(R.id.tvName)
     EditText tvName;
     @BindView(R.id.tvEmail)
@@ -89,7 +88,6 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
     PrefManager prefManager;
     Context context;
 
-    Toolbar toolbar;
     Calendar calendar;
     DatePickerDialog dialog;
     Context mContext = this;
@@ -105,6 +103,11 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         ibPhoto=findViewById(R.id.idPhoto);
+
+        Toolbar toolbar = findViewById(R.id.toolbarCon);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Booking Detail");
 
         apiInterface = UtilsApi.getApiService();
         prefManager = new PrefManager(this);
@@ -267,5 +270,18 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
     private RequestBody createPartFromString(String descriptionString) {
         return RequestBody.create(
                 okhttp3.MultipartBody.FORM, descriptionString);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // API 5+ solution
+                onBackPressed();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
