@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -64,7 +65,10 @@ public class MakeOrderActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Button btnOrder = findViewById(R.id.buttonPesan);
-        Toolbar toolbar = findViewById(R.id.toolbarDetailJasa);
+        Toolbar toolbar = findViewById(R.id.toolbarOrder);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Jasa Selected");
 
         context = this;
         apiInterface = UtilsApi.getApiService();
@@ -130,30 +134,39 @@ public class MakeOrderActivity extends AppCompatActivity {
     }
 
     private void fecthAddress() {
-//        apiInterface.getAddress(prefManager.getId()).enqueue(new Callback<ResponseBody>() {
-//            @Override
-//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                if (response.isSuccessful()){
-//                    try {
-//                        JSONObject jsonObject = new JSONObject(response.body().string());
-//                        if (jsonObject.getString("code").equals("0")){
-//                            JSONObject data = jsonObject.getJSONObject("data");
-//
-//                            tvAddress.setText(data.getString("detail_address") +"/n"+ data.getString("kelurahan_id") );
-//                        }
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ResponseBody> call, Throwable t) {
-//
-//            }
-//        });
+        apiInterface.getAddress(prefManager.getId()).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()){
+                    try {
+                        JSONObject jsonObject = new JSONObject(response.body().string());
+                        if (jsonObject.getString("code").equals("0")){
+                            JSONObject data = jsonObject.getJSONObject("data");
+
+                            tvAddress.setText(data.getString("detail_address")
+                                    +",\nKec."+ data.getJSONObject("Kelurahan").getString("nama")
+                                    +",\nKab."+ data.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getString("nama")
+                                    +",\n"+ data.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getJSONObject("Kotum").getString("nama")+" ID "+data.getString("kota_id"));
+                            tvAddress.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    startActivity(new Intent(getApplicationContext(), AddAddressActivity.class));
+                                }
+                            });
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
     }
 
     private void makeOrder() {
@@ -190,5 +203,18 @@ public class MakeOrderActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // API 5+ solution
+                onBackPressed();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
