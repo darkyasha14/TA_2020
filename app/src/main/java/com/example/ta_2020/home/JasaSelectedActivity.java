@@ -78,6 +78,7 @@ public class JasaSelectedActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Home");
 
         prefManager = new PrefManager(context);
 
