@@ -16,7 +16,11 @@ import com.example.ta_2020.home.JasaSelectedActivity;
 import com.example.ta_2020.order.BookingDetailActivity;
 import com.example.ta_2020.order.model.BookingList;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,7 +47,21 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListAdapter.
         vholder.tvKode.setText("#"+dataBeans.get(i).getInvoice_no());
         vholder.tvMotode.setText(dataBeans.get(i).getJasa().getJasa_name());
         vholder.tvTipe.setText(dataBeans.get(i).getJasa().getSub_category().getSub_category_name());
-        vholder.tvTimeNDate.setText(dataBeans.get(i).getCreatedAt());
+//        vholder.tvTimeNDate.setText(dataBeans.get(i).getCreatedAt());
+
+        String dtc = dataBeans.get(i).getCreatedAt();
+        SimpleDateFormat readDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        readDate.setTimeZone(TimeZone.getTimeZone("GMT")); // missing line
+        Date date = null;
+        try {
+            date = readDate.parse(dtc);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        SimpleDateFormat writeDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        writeDate.setTimeZone(TimeZone.getTimeZone("GMT+07:00"));
+        String s = writeDate.format(date);
+        vholder.tvTimeNDate.setText(s);
 
         vholder.cvOrder.setOnClickListener(new View.OnClickListener() {
             @Override
