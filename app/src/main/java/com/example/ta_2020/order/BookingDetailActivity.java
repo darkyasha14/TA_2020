@@ -2,10 +2,9 @@ package com.example.ta_2020.order;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,21 +15,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
-import com.example.ta_2020.MainActivity;
 import com.example.ta_2020.PrefManager;
 import com.example.ta_2020.R;
 import com.example.ta_2020.apihelper.ApiInterface;
 import com.example.ta_2020.apihelper.UtilsApi;
-import com.example.ta_2020.order.adapter.BookingListAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,6 +65,7 @@ public class BookingDetailActivity extends AppCompatActivity {
 
     Button btnPayment, btnPaid;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +75,7 @@ public class BookingDetailActivity extends AppCompatActivity {
         btnPayment = findViewById(R.id.btnPaymentMethode);
         btnPaid = findViewById(R.id.btnPaid);
 
-        context=this;
+        context = this;
         apiInterface = UtilsApi.getApiService();
 
         prefManager = new PrefManager(context);
@@ -88,13 +89,13 @@ public class BookingDetailActivity extends AppCompatActivity {
                 apiInterface.getPaymentMethod(prefManager.getTokenUser(), prefManager.getId(), intent.getStringExtra("eINVOICE")).enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        if (response.isSuccessful()){
+                        if (response.isSuccessful()) {
                             try {
                                 JSONObject jsonObject = new JSONObject(response.body().string());
-                                if (jsonObject.getString("code").equals("0")){
+                                if (jsonObject.getString("code").equals("0")) {
                                     Toast.makeText(context, "please check your email", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), PaymentMethodActivity.class));
-                                }else {
+                                } else {
                                     startActivity(new Intent(getApplicationContext(), PaymentMethodActivity.class));
                                     Toast.makeText(context, "we have been send payment method to your email", Toast.LENGTH_SHORT).show();
                                 }
@@ -130,21 +131,32 @@ public class BookingDetailActivity extends AppCompatActivity {
         apiInterface.getBookingDetail(prefManager.getTokenUser(), invoice).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
-                        if (jsonObject.getString("code").equals("0")){
+                        if (jsonObject.getString("code").equals("0")) {
 
                             JSONObject data = jsonObject.getJSONObject("data");
-                            txtCodeBooking.setText("#"+data.getString("invoice_no"));
+                            txtCodeBooking.setText("#" + data.getString("invoice_no"));
 
-                            String hour = data.getString("createdAt").substring(11, 13);
-                            String menit = data.getString("createdAt").substring(14, 16);
-                            String detik = data.getString("createdAt").substring(17, 19);
-                            int totalDetikOrder = (Integer.parseInt(hour) * 3600) + (Integer.parseInt(menit) * 60) + Integer.parseInt(detik);
+                            String dtc = data.getString("createdAt");
+                            SimpleDateFormat readDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                            readDate.setTimeZone(TimeZone.getTimeZone("GMT")); // missing line
+                            Date date = readDate.parse(dtc);
+                            SimpleDateFormat writeDate = new SimpleDateFormat("HH");
+                            SimpleDateFormat writeDateM = new SimpleDateFormat("mm");
+                            SimpleDateFormat writeDateS = new SimpleDateFormat("ss");
+                            writeDate.setTimeZone(TimeZone.getTimeZone("GMT+07:00"));
+                            writeDateM.setTimeZone(TimeZone.getTimeZone("GMT+07:00"));
+                            writeDateS.setTimeZone(TimeZone.getTimeZone("GMT+07:00"));
+                            String hour = writeDate.format(date);
+                            String minutes = writeDateM.format(date);
+                            String second = writeDateS.format(date);
+
+                            int totalDetikOrder = (Integer.parseInt(hour) * 3600) + (Integer.parseInt(minutes) * 60) + Integer.parseInt(second);
                             countdownPayment(totalDetikOrder);
 
-                            tvPrice.setText((NumberFormat.getCurrencyInstance(new Locale("in", "ID")).format(data.getJSONObject("Jasa").getInt("jasa_price"))+ ""));
+                            tvPrice.setText((NumberFormat.getCurrencyInstance(new Locale("in", "ID")).format(data.getJSONObject("Jasa").getInt("jasa_price")) + ""));
                             tvSubName.setText(data.getJSONObject("Jasa").getJSONObject("Sub_category").getString("sub_category_name"));
                             txtCategory.setText(data.getJSONObject("Jasa").getJSONObject("Sub_category").getJSONObject("Category").getString("category_name"));
                             txtProdukJasaName.setText(data.getJSONObject("Jasa").getString("jasa_name"));
@@ -158,6 +170,8 @@ public class BookingDetailActivity extends AppCompatActivity {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 }
@@ -206,7 +220,7 @@ public class BookingDetailActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                txtCoundown.setText("Finish!");
+                txtCoundown.setText("Expired");
             }
 
         }.start();
