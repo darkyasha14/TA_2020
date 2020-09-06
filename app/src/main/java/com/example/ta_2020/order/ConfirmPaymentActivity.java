@@ -44,8 +44,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -119,6 +122,9 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
                 openFileChooser();
             }
         });
+
+        String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        txtFormDate.setText(date);
 
         txtFormDate.setOnClickListener(new View.OnClickListener() {
             @Override
