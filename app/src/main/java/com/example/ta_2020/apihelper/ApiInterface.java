@@ -114,8 +114,10 @@ public interface ApiInterface {
                                   @Field("detail_address") String address
     );
 
-    @GET("address-list/{id}")
-    Call<ResponseBody> getAddress(@Path("id") int id
+    @FormUrlEncoded
+    @POST("address-detail")
+    Call<ResponseBody> getAddress(@Field("user_id") int id,
+                                  @Field("address_id") int idAddress
     );
 
     @GET("jasa/{id}")
