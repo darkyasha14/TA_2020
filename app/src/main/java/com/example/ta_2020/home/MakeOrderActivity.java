@@ -3,13 +3,14 @@ package com.example.ta_2020.home;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -57,6 +58,8 @@ public class MakeOrderActivity extends AppCompatActivity {
     Context context;
     @BindView(R.id.tvAddress)
     TextView tvAddress;
+    @BindView(R.id.chkValid)
+    CheckBox chkValid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,13 +85,11 @@ public class MakeOrderActivity extends AppCompatActivity {
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(tvAddress.getText().toString())) {
-                    tvAddress.setError("please add your address");
-                    return;
-                }else {
+                if (chkValid.isChecked()) {
                     makeOrder();
+                }else {
+                    Toast.makeText(context, "make sure add your address, and check the checkbox", Toast.LENGTH_SHORT).show();
                 }
-
 
             }
         });
@@ -97,13 +98,13 @@ public class MakeOrderActivity extends AppCompatActivity {
     private void fecthItem() {
         Intent intent = getIntent();
         final int idjasa = intent.getIntExtra("idJasa", 1);
-        apiInterface.getjasaDetail(prefManager.getTokenUser(),idjasa).enqueue(new Callback<ResponseBody>() {
+        apiInterface.getjasaDetail(prefManager.getTokenUser(), idjasa).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
-                        if (jsonObject.getString("code").equals("0")){
+                        if (jsonObject.getString("code").equals("0")) {
                             JSONObject data = jsonObject.getJSONObject("data");
 
                             tvJasa.setText(data.getString("jasa_name"));
@@ -113,8 +114,8 @@ public class MakeOrderActivity extends AppCompatActivity {
                                     .load(data.getJSONObject("Sub_category").getString("img_url"))
                                     .centerCrop()
                                     .into(ivSub);
-                            tvPrice.setText((NumberFormat.getCurrencyInstance(new Locale("in", "ID")).format(data.getInt("jasa_price"))+ ""));
-                            tPrice.setText((NumberFormat.getCurrencyInstance(new Locale("in", "ID")).format(data.getInt("jasa_price"))+ ""));
+                            tvPrice.setText((NumberFormat.getCurrencyInstance(new Locale("in", "ID")).format(data.getInt("jasa_price")) + ""));
+                            tPrice.setText((NumberFormat.getCurrencyInstance(new Locale("in", "ID")).format(data.getInt("jasa_price")) + ""));
 
                         }
 
@@ -137,16 +138,16 @@ public class MakeOrderActivity extends AppCompatActivity {
         apiInterface.getAddress(prefManager.getId()).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
-                        if (jsonObject.getString("code").equals("0")){
+                        if (jsonObject.getString("code").equals("0")) {
                             JSONObject data = jsonObject.getJSONObject("data");
 
                             tvAddress.setText(data.getString("detail_address")
-                                    +",\nKec."+ data.getJSONObject("Kelurahan").getString("nama")
-                                    +",\nKab."+ data.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getString("nama")
-                                    +",\n"+ data.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getJSONObject("Kotum").getString("nama")+" ID "+data.getString("kota_id"));
+                                    + ",\nKec." + data.getJSONObject("Kelurahan").getString("nama")
+                                    + ",\nKab." + data.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getString("nama")
+                                    + ",\n" + data.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getJSONObject("Kotum").getString("nama") + " ID " + data.getString("kota_id"));
                             tvAddress.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
