@@ -135,7 +135,8 @@ public class MakeOrderActivity extends AppCompatActivity {
     }
 
     private void fecthAddress() {
-        apiInterface.getAddress(prefManager.getId()).enqueue(new Callback<ResponseBody>() {
+        final int idAddress = getIntent().getIntExtra("eID", 2);
+        apiInterface.getAddress(prefManager.getId(), idAddress).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
@@ -144,10 +145,20 @@ public class MakeOrderActivity extends AppCompatActivity {
                         if (jsonObject.getString("code").equals("0")) {
                             JSONObject data = jsonObject.getJSONObject("data");
 
+                            Toast.makeText(context, ""+ idAddress, Toast.LENGTH_SHORT).show();
+
                             tvAddress.setText(data.getString("detail_address")
                                     + ",\nKec." + data.getJSONObject("Kelurahan").getString("nama")
                                     + ",\nKab." + data.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getString("nama")
                                     + ",\n" + data.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getJSONObject("Kotum").getString("nama") + " ID " + data.getString("kota_id"));
+                            tvAddress.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    startActivity(new Intent(getApplicationContext(), AddAddressActivity.class));
+                                }
+                            });
+                        }else {
+                            Toast.makeText(context, "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                             tvAddress.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
