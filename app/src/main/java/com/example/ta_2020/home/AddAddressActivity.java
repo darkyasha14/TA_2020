@@ -85,10 +85,12 @@ public class AddAddressActivity extends AppCompatActivity {
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
                         if (jsonObject.getString("code").equals("0")){
-                            Toast.makeText(AddAddressActivity.this, "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                            Toast.makeText(AddAddressActivity.this, ""+idKab, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MakeOrderActivity.class);
 
+                            JSONObject data = jsonObject.getJSONObject("data");
+
+                            Toast.makeText(AddAddressActivity.this, ""+ data.getString("address_id"), Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MakeOrderActivity.class);
+                            intent.putExtra("eID", data.getString("address_id"));
                             startActivity(intent);
                         }
                     } catch (JSONException e) {
