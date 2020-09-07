@@ -4,5 +4,8 @@
     <color name="colorPrimaryDark">#19AF0D </color>
     <color name="colorAccent">#22D114</color>
     <color name="colorText">#22D114</color>
+    <color name="white">#EFF3EF</color>
+    <color name="black">#0C0C0C</color>
+    <color name="colorParalax">#14b910</color>
 
 </resources>
