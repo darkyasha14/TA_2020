@@ -93,6 +93,9 @@ public class ActiveFragment extends Fragment {
                              rvOrder.setLayoutManager(new LinearLayoutManager(context));
                              rvOrder.setAdapter(bookingListAdapter);
 
+                         }else {
+                             progressDialog.hideDialog();
+                             Toast.makeText(context, "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                          }
 
                      } catch (JSONException e) {
@@ -116,6 +119,7 @@ public class ActiveFragment extends Fragment {
 
              @Override
              public void onFailure(Call<ResponseBody> call, Throwable t) {
+                 Toast.makeText(context, "no internet connections", Toast.LENGTH_SHORT).show();
                  progressDialog.hideDialog();
 
              }
