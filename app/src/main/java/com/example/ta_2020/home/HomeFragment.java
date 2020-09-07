@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ta_2020.PrefManager;
@@ -33,8 +35,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -54,7 +60,7 @@ public class HomeFragment extends Fragment {
 
     PrefManager prefManager;
 
-
+    TextView tvDate;
     ApiInterface apiHelper;
 
     ProgressDialog progressDialog;
@@ -79,6 +85,7 @@ public class HomeFragment extends Fragment {
         }
 
 
+        tvDate = view.findViewById(R.id.tvDate);
 
         context = view.getContext();
         apiHelper = UtilsApi.getApiService();
@@ -89,6 +96,23 @@ public class HomeFragment extends Fragment {
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.showDialog();
+
+        toolbar = view.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+
+        CollapsingToolbarLayout collapsingToolbarLayout = view.findViewById(R.id.collapsing_toolbar);
+        collapsingToolbarLayout.setTitle("Repind");
+
+        collapsingToolbarLayout.setCollapsedTitleTextColor(
+                ContextCompat.getColor(context, R.color.white));
+        collapsingToolbarLayout.setExpandedTitleColor(
+                ContextCompat.getColor(context, R.color.colorParalax));
+
+        Date c = Calendar.getInstance().getTime();
+        SimpleDateFormat df = new SimpleDateFormat("EE, dd MMM yyyy", Locale.getDefault());
+        String formattedDate = df.format(c);
+
+        tvDate.setText(formattedDate);
         
         fetchCategory();
         
@@ -142,6 +166,7 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "no internet connections", Toast.LENGTH_SHORT).show();
                 progressDialog.hideDialog();
 
             }
