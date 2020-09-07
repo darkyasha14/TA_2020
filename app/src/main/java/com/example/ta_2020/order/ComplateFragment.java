@@ -118,6 +118,7 @@ public class ComplateFragment extends Fragment {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(context, "no internet connections", Toast.LENGTH_SHORT).show();
                 progressDialog.hideDialog();
 
             }
