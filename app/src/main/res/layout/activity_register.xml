@@ -10,7 +10,7 @@
     tools:context=".auth.RegisterActivity">
 
     <ImageView
-        android:src="@drawable/ic_launcher_foreground"
+        android:src="@drawable/logo1"
         android:layout_width="200dp"
         android:layout_gravity="center"
         android:layout_height="150dp"
