@@ -112,7 +112,7 @@
                         android:background="@drawable/btn_bg"
                         android:paddingHorizontal="15dp"
                         android:paddingVertical="5dp"
-                        android:text="COMPLATE"
+                        android:text="COMPLETE"
                         android:textColor="@color/colorText"
                         android:textStyle="bold" />
                 </RelativeLayout>
