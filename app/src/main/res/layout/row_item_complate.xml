@@ -41,7 +41,7 @@
                 </TextView>
                 <Button
                     android:id="@+id/btnWait"
-                    android:text="COMPLATE"
+                    android:text="COMPLETE"
                     android:textSize="10dp"
                     android:textColor="@color/colorText"
                     android:background="@drawable/btn_bg"
