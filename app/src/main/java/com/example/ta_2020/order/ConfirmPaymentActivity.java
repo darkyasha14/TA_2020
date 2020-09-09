@@ -110,7 +110,7 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbarCon);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Booking Detail");
+        getSupportActionBar().setTitle("Confirm Payment");
 
         apiInterface = UtilsApi.getApiService();
         prefManager = new PrefManager(this);
