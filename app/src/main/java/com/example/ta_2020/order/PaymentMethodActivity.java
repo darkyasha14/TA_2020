@@ -33,7 +33,7 @@ public class PaymentMethodActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbarPay);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Booking Detail");
+        getSupportActionBar().setTitle("Payment Method");
 
         expandableListView = (ExpandableListView) findViewById(R.id.expandableListView);
         expandableListDetail = ExpandableListDataPump.getData();
