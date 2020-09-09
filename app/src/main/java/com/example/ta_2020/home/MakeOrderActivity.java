@@ -71,7 +71,7 @@ public class MakeOrderActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbarOrder);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Jasa Selected");
+        getSupportActionBar().setTitle("Checkout");
 
         context = this;
         apiInterface = UtilsApi.getApiService();
