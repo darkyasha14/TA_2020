@@ -197,7 +197,7 @@ public class BookingDetailActivity extends AppCompatActivity {
         }
         int total = (totalDetikOrderNow - totalDetikOrder);
 
-        new CountDownTimer(2100000 - (total * 1000), 1000) {
+        new CountDownTimer(3600000 - (total * 1000), 1000) {
 
             public void onTick(long millisUntilFinished) {
 
