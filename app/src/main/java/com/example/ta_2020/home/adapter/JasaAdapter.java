@@ -81,8 +81,7 @@ public class JasaAdapter extends RecyclerView.Adapter<JasaAdapter.vHolder> {
 
     public class vHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.ivCategory)
-        ImageView ivCategory;
+
         @BindView(R.id.jasaName)
         TextView jasaName;
         @BindView(R.id.jasaPrice)
