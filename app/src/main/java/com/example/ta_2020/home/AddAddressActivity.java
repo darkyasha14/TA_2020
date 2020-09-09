@@ -48,7 +48,7 @@ public class AddAddressActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbarFormAddress);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Checkout");
+        getSupportActionBar().setTitle("Add Address");
         btnSimpan = findViewById(R.id.btnSimpan);
 
         spinnerKabKota = findViewById(R.id.spinnerKabKota);
