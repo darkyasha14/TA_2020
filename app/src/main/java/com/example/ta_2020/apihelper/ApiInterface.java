@@ -49,8 +49,8 @@ public interface ApiInterface {
     @Multipart
     @PUT("update-profil")
     Call<ResponseBody> updateProfile(@HeaderMap Map<String, String> stringStringMap,
-                                   @PartMap Map<String, RequestBody> stringBody,
-                                   @Part MultipartBody.Part filePart);
+                                     @PartMap Map<String, RequestBody> stringBody,
+                                     @Part MultipartBody.Part filePart);
 
     @GET("category")
     Call<ResponseBody> getCategory(@Header("Authorization") String token);
@@ -58,11 +58,13 @@ public interface ApiInterface {
     @GET("sub-category/{id}")
     Call<ResponseBody> getJasa(@Header("Authorization") String token,
                                @Path("id") int id);
+
     @FormUrlEncoded
     @POST("booking")
     Call<ResponseBody> makeOrder(@Header("Authorization") String token,
                                  @Field("user_id") int idUser,
-                                 @Field("jasa_id") int idJasa);
+                                 @Field("jasa_id") int idJasa,
+                                 @Field("address_id") int idAddress);
 
     @GET("booking-list-user/{id}")
     Call<ResponseBody> getBookingList(@Header("Authorization") String token,
@@ -120,12 +122,14 @@ public interface ApiInterface {
                                   @Field("address_id") int idAddress
     );
 
+
+    @GET("address-list/{id}")
+    Call<ResponseBody> getAddressUser(@Path("id") int id);
+
     @GET("jasa/{id}")
     Call<ResponseBody> getjasaDetail(@Header("Authorization") String token,
                                      @Path("id") int id
     );
-
-
 
 
 }
