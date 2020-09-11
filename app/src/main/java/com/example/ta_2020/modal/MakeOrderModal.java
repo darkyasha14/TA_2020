@@ -64,7 +64,7 @@ public class MakeOrderModal extends BottomSheetDialogFragment {
     private void makeOrder() {
         Bundle bundle = getArguments();
         final int idjasa =  bundle.getInt("idJasa", 1);
-        apiInterface.makeOrder(prefManager.getTokenUser(), prefManager.getId(), idjasa).enqueue(new Callback<ResponseBody>() {
+        apiInterface.makeOrder(prefManager.getTokenUser(), prefManager.getId(), idjasa, prefManager.getIdAdd()).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()){
