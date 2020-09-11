@@ -1,6 +1,9 @@
 package com.example.ta_2020.home;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -24,6 +27,7 @@ import com.example.ta_2020.PrefManager;
 import com.example.ta_2020.R;
 import com.example.ta_2020.apihelper.ApiInterface;
 import com.example.ta_2020.apihelper.UtilsApi;
+import com.example.ta_2020.auth.LoginActivity;
 import com.example.ta_2020.home.adapter.CategoryAdapter;
 import com.example.ta_2020.home.model.Category;
 import com.example.ta_2020.profil.ProgressDialog;
@@ -144,7 +148,26 @@ public class HomeFragment extends Fragment {
                             recyclerView.setHasFixedSize(true);
                         } else {
                             progressDialog.hideDialog();
-                            Toast.makeText(context, "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                            builder.setMessage(jsonObject.getString("message")+"")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            PrefManager prefManager = new PrefManager(getContext());
+                                            prefManager.removeSession();
+                                            prefManager.spString(PrefManager.SP_TOKEN_USER, "");
+                                            prefManager.spInt(PrefManager.SP_ID, -1);
+                                            getActivity().finish();
+                                            Intent intent = new Intent(getContext(), LoginActivity.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                            startActivity(intent);
+
+                                        }
+                                    });
+                            AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
+                            Toast.makeText(context, "" , Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
