@@ -16,6 +16,8 @@ public class PrefManager {
     public static final String SP_ID = "spID";
     public static final String SP_TOKEN_USER = "spTokenUser";
 
+    public static final String SP_ID_ADDRESS = "spAddress";
+
     public static final String SP_AFTER_LOGIN = "spLogin";
 
 
@@ -50,6 +52,11 @@ public class PrefManager {
         editor.commit();
     }
 
+    public void spAddress(String key, int value){
+        editor.putInt(key, value);
+        editor.commit();
+    }
+
     public void spString(String key, String value){
         editor.putString(key, value);
         editor.commit();
@@ -65,6 +72,10 @@ public class PrefManager {
 
     public Boolean getSPLogin(){
         return pref.getBoolean(SP_AFTER_LOGIN, false);
+    }
+
+    public int getIdAdd(){
+        return pref.getInt(SP_ID_ADDRESS, 0);
     }
 
 }
