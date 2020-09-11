@@ -79,6 +79,14 @@ public class MakeOrderActivity extends AppCompatActivity {
 
         prefManager = new PrefManager(context);
 
+        tvAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), AddAddressActivity.class));
+                finish();
+            }
+        });
+
         fecthAddress();
         fecthItem();
 
@@ -135,36 +143,23 @@ public class MakeOrderActivity extends AppCompatActivity {
     }
 
     private void fecthAddress() {
-        final int idAddress = getIntent().getIntExtra("eID", 2);
-        apiInterface.getAddress(prefManager.getId(), idAddress).enqueue(new Callback<ResponseBody>() {
+        apiInterface.getAddress(prefManager.getId(), prefManager.getIdAdd()).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
+                if (response.isSuccessful()){
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
-                        if (jsonObject.getString("code").equals("0")) {
-                            JSONObject data = jsonObject.getJSONObject("data");
+                        if (jsonObject.getString("code").equals("0")){
+                            JSONObject jsonData = jsonObject.getJSONObject("data");
 
-                            Toast.makeText(context, ""+ idAddress, Toast.LENGTH_SHORT).show();
+                            tvAddress.setText(jsonData.getString("detail_address")+",\n"+
+                                    jsonData.getJSONObject("Kelurahan").getString("nama")+",\n"+
+                                    jsonData.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getString("nama")+",\n"+
+                                    jsonData.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getJSONObject("Kotum").getString("nama")+", ID "+
+                                    jsonData.getString("kota_id"));
 
-                            tvAddress.setText(data.getString("detail_address")
-                                    + ",\nKec." + data.getJSONObject("Kelurahan").getString("nama")
-                                    + ",\nKab." + data.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getString("nama")
-                                    + ",\n" + data.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getJSONObject("Kotum").getString("nama") + " ID " + data.getString("kota_id"));
-                            tvAddress.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    startActivity(new Intent(getApplicationContext(), AddAddressActivity.class));
-                                }
-                            });
-                        }else {
-                            Toast.makeText(context, "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                            tvAddress.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    startActivity(new Intent(getApplicationContext(), AddAddressActivity.class));
-                                }
-                            });
+                        }else{
+
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -184,7 +179,7 @@ public class MakeOrderActivity extends AppCompatActivity {
     private void makeOrder() {
         Intent intent = getIntent();
         final int idjasa = intent.getIntExtra("idJasa", 1);
-        apiInterface.makeOrder(prefManager.getTokenUser(), prefManager.getId(), idjasa).enqueue(new Callback<ResponseBody>() {
+        apiInterface.makeOrder(prefManager.getTokenUser(), prefManager.getId(), idjasa, prefManager.getIdAdd()).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
