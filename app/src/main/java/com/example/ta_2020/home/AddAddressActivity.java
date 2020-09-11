@@ -3,6 +3,7 @@ package com.example.ta_2020.home;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -40,6 +41,8 @@ public class AddAddressActivity extends AppCompatActivity {
     ApiInterface apiHelper;
     String idKab,idKec,idKel;
 
+    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,8 @@ public class AddAddressActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Add Address");
         btnSimpan = findViewById(R.id.btnSimpan);
+
+        context= this;
 
         spinnerKabKota = findViewById(R.id.spinnerKabKota);
         spinnerKec = findViewById(R.id.spinnerKecamatan);
@@ -88,10 +93,14 @@ public class AddAddressActivity extends AppCompatActivity {
 
                             JSONObject data = jsonObject.getJSONObject("data");
 
-                            Toast.makeText(AddAddressActivity.this, ""+ data.getString("address_id"), Toast.LENGTH_SHORT).show();
+                            String address = data.getString("address_id");
+                            int id_add = Integer.parseInt(address);
+                            Toast.makeText(AddAddressActivity.this, ""+ id_add, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MakeOrderActivity.class);
-                            intent.putExtra("eID", data.getString("address_id"));
+                            PrefManager prefManager = new PrefManager(context);
+                            prefManager.spAddress(PrefManager.SP_ID_ADDRESS, id_add);
                             startActivity(intent);
+                            finish();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
