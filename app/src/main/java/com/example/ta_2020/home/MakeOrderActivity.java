@@ -1,15 +1,21 @@
 package com.example.ta_2020.home;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +32,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.text.NumberFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -60,6 +68,15 @@ public class MakeOrderActivity extends AppCompatActivity {
     TextView tvAddress;
     @BindView(R.id.chkValid)
     CheckBox chkValid;
+    @BindView(R.id.txtFormDate)
+    EditText txtFormDate;
+    @BindView(R.id.txtFormTime)
+    EditText txtFormTime;
+
+    Calendar calendar, calender1;
+    DatePickerDialog dialog;
+    Time time;
+    TimePickerDialog dialog1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +104,59 @@ public class MakeOrderActivity extends AppCompatActivity {
             }
         });
 
+        txtFormDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calendar = Calendar.getInstance();
+                final int day = calendar.get(Calendar.DAY_OF_MONTH);
+                final int month = calendar.get(Calendar.MONTH);
+                final int year = calendar.get(Calendar.YEAR);
+
+                dialog = new DatePickerDialog(MakeOrderActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        String bulan = "" + i1;
+                        String tgl = "" + i2;
+                        if (i1 < 10) {
+                            bulan = "0" + (i1 + 1);
+                        }
+                        if (i2 < 10) {
+                            tgl = "0" + i2;
+                        }
+                        txtFormDate.setText(i + "-" + bulan + "-" + tgl);
+                    }
+                }, year, month, day);
+                dialog.show();
+            }
+        });
+
+        txtFormTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calender1 = Calendar.getInstance();
+                final int hour = calender1.get(Calendar.HOUR_OF_DAY);
+                final int minute = calender1.get(Calendar.MINUTE);
+
+                dialog1 = new TimePickerDialog(MakeOrderActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                        String jam = i + "";
+                        String menit = i1 + "";
+                        if (i < 10) {
+                            jam = "0" + i;
+                        }
+                        if (i1 < 10) {
+                            menit = "0" + i1;
+                        }
+                        txtFormTime.setText(jam + ":" + menit);
+                    }
+                }, hour, minute, DateFormat.is24HourFormat(context));
+                dialog1.show();
+            }
+        });
+
+
+
         fecthAddress();
         fecthItem();
 
@@ -95,7 +165,7 @@ public class MakeOrderActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (chkValid.isChecked()) {
                     makeOrder();
-                }else {
+                } else {
                     Toast.makeText(context, "make sure add your address, and check the checkbox", Toast.LENGTH_SHORT).show();
                 }
 
@@ -106,7 +176,7 @@ public class MakeOrderActivity extends AppCompatActivity {
     private void fecthItem() {
         Intent intent = getIntent();
         final int idjasa = intent.getIntExtra("idJasa", 1);
-        apiInterface.getjasaDetail(prefManager.getTokenUser(), idjasa).enqueue(new Callback<ResponseBody>() {
+        apiInterface.getjasaDetail(prefManager.getTokenUser(),idjasa).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
@@ -146,19 +216,19 @@ public class MakeOrderActivity extends AppCompatActivity {
         apiInterface.getAddress(prefManager.getId(), prefManager.getIdAdd()).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     try {
                         JSONObject jsonObject = new JSONObject(response.body().string());
-                        if (jsonObject.getString("code").equals("0")){
+                        if (jsonObject.getString("code").equals("0")) {
                             JSONObject jsonData = jsonObject.getJSONObject("data");
 
-                            tvAddress.setText(jsonData.getString("detail_address")+",\n"+
-                                    jsonData.getJSONObject("Kelurahan").getString("nama")+",\n"+
-                                    jsonData.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getString("nama")+",\n"+
-                                    jsonData.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getJSONObject("Kotum").getString("nama")+", ID "+
+                            tvAddress.setText(jsonData.getString("detail_address") + ",\n" +
+                                    jsonData.getJSONObject("Kelurahan").getString("nama") + ",\n" +
+                                    jsonData.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getString("nama") + ",\n" +
+                                    jsonData.getJSONObject("Kelurahan").getJSONObject("Kecamatan").getJSONObject("Kotum").getString("nama") + ", ID " +
                                     jsonData.getString("kota_id"));
 
-                        }else{
+                        } else {
 
                         }
                     } catch (JSONException e) {
@@ -179,7 +249,11 @@ public class MakeOrderActivity extends AppCompatActivity {
     private void makeOrder() {
         Intent intent = getIntent();
         final int idjasa = intent.getIntExtra("idJasa", 1);
-        apiInterface.makeOrder(prefManager.getTokenUser(), prefManager.getId(), idjasa, prefManager.getIdAdd()).enqueue(new Callback<ResponseBody>() {
+        apiInterface.makeOrder(prefManager.getTokenUser(),
+                prefManager.getId(),
+                idjasa,
+                prefManager.getIdAdd(),
+                txtFormDate.getText().toString() + " " + txtFormTime.getText().toString() + ":00").enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
