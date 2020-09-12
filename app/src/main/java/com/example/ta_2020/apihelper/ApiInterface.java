@@ -1,5 +1,6 @@
 package com.example.ta_2020.apihelper;
 
+import java.util.Date;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -64,7 +65,9 @@ public interface ApiInterface {
     Call<ResponseBody> makeOrder(@Header("Authorization") String token,
                                  @Field("user_id") int idUser,
                                  @Field("jasa_id") int idJasa,
-                                 @Field("address_id") int idAddress);
+                                 @Field("address_id") int idAddress,
+                                 @Field("working_date") String date
+    );
 
     @GET("booking-list-user/{id}")
     Call<ResponseBody> getBookingList(@Header("Authorization") String token,
