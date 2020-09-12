@@ -62,39 +62,40 @@ public class MakeOrderModal extends BottomSheetDialogFragment {
     }
 
     private void makeOrder() {
-        Bundle bundle = getArguments();
-        final int idjasa =  bundle.getInt("idJasa", 1);
-        apiInterface.makeOrder(prefManager.getTokenUser(), prefManager.getId(), idjasa, prefManager.getIdAdd()).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()){
-                    Log.i("debug", "onResponse: SUCCESS");
-                    try {
-                        JSONObject jsonObject = new JSONObject(response.body().string());
-                        if (jsonObject.getString("code").equals("0")){
-                            Intent intent = new Intent(context, MainActivity.class);
-                            intent.putExtra("FLAGPAGE", 1);
-                            startActivity(intent);
-                            getActivity().finish();
-                        }
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-
-                }else {
-                    Log.e("debug", "onResponse: ERR");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-
-            }
-        });
+//        Bundle bundle = getArguments();
+//        final int idjasa =  bundle.getInt("idJasa", 1);
+//        apiInterface.makeOrder(prefManager.getTokenUser(), prefManager.getId(), idjasa, prefManager.getIdAdd(),
+//                txtFormDate.getText().toString() + " " + txtFormTime.getText().toString() + ":00").enqueue(new Callback<ResponseBody>() {
+//            @Override
+//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                if (response.isSuccessful()){
+//                    Log.i("debug", "onResponse: SUCCESS");
+//                    try {
+//                        JSONObject jsonObject = new JSONObject(response.body().string());
+//                        if (jsonObject.getString("code").equals("0")){
+//                            Intent intent = new Intent(context, MainActivity.class);
+//                            intent.putExtra("FLAGPAGE", 1);
+//                            startActivity(intent);
+//                            getActivity().finish();
+//                        }
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//
+//                }else {
+//                    Log.e("debug", "onResponse: ERR");
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//
+//            }
+//        });
     }
 
 }
