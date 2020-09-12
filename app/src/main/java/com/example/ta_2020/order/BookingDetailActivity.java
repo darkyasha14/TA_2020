@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -64,6 +63,8 @@ public class BookingDetailActivity extends AppCompatActivity {
     PrefManager prefManager;
 
     Button btnPayment, btnPaid;
+    @BindView(R.id.txtDate)
+    TextView txtDate;
 
 
     @Override
@@ -160,6 +161,16 @@ public class BookingDetailActivity extends AppCompatActivity {
                             tvSubName.setText(data.getJSONObject("Jasa").getJSONObject("Sub_category").getString("sub_category_name"));
                             txtCategory.setText(data.getJSONObject("Jasa").getJSONObject("Sub_category").getJSONObject("Category").getString("category_name"));
                             txtProdukJasaName.setText(data.getJSONObject("Jasa").getString("jasa_name"));
+
+
+                            String dtc2 = data.getString("working_date");
+                            SimpleDateFormat readDate2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                            readDate2.setTimeZone(TimeZone.getTimeZone("GMT")); // missing line
+                            Date date2 = readDate2.parse(dtc2);
+                            SimpleDateFormat writeDate2 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                            writeDate2.setTimeZone(TimeZone.getTimeZone("GMT+07:00"));
+                            String s2 = writeDate2.format(date2);
+                            txtDate.setText(s2);
 
                             Glide.with(context)
                                     .load(data.getJSONObject("Jasa").getJSONObject("Sub_category").getString("img_url"))
