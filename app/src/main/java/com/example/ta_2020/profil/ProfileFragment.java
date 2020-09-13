@@ -83,10 +83,6 @@ public class ProfileFragment extends Fragment {
     TextView tvPasswd;
     @BindView(R.id.cvPasswd)
     CardView cvPasswd;
-    @BindView(R.id.tvAbout)
-    TextView tvAbout;
-    @BindView(R.id.cvAbout)
-    CardView cvAbout;
 
     Uri mImageUri;
     String imagePath;
