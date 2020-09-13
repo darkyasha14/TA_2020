@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
         }else {
             changeFragment(new HomeFragment(), HomeFragment.class
                     .getSimpleName());
-
             bottomNav.setSelectedItemId(R.id.nav_home);
         }
     }
