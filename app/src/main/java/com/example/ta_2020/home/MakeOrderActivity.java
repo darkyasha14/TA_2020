@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.MenuItem;
@@ -164,7 +165,15 @@ public class MakeOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (chkValid.isChecked()) {
-                    makeOrder();
+                    if (TextUtils.isEmpty(txtFormDate.getText().toString())) {
+                        txtFormDate.setError("Please add date");
+                        return;
+                    } else if (TextUtils.isEmpty(txtFormTime.getText().toString())) {
+                        txtFormTime.setError("Please add time");
+                        return;
+                    } else {
+                        makeOrder();
+                    }
                 } else {
                     Toast.makeText(context, "make sure add your address, and check the checkbox", Toast.LENGTH_SHORT).show();
                 }
