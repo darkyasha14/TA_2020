@@ -65,6 +65,8 @@ public class BookingDetailActivity extends AppCompatActivity {
     Button btnPayment, btnPaid;
     @BindView(R.id.txtDate)
     TextView txtDate;
+    @BindView(R.id.txtTime)
+    TextView txtTime;
 
 
     @Override
@@ -167,10 +169,18 @@ public class BookingDetailActivity extends AppCompatActivity {
                             SimpleDateFormat readDate2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
                             readDate2.setTimeZone(TimeZone.getTimeZone("GMT")); // missing line
                             Date date2 = readDate2.parse(dtc2);
-                            SimpleDateFormat writeDate2 = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                            SimpleDateFormat writeDate2 = new SimpleDateFormat("dd-MM-yyyy");
                             writeDate2.setTimeZone(TimeZone.getTimeZone("GMT+07:00"));
                             String s2 = writeDate2.format(date2);
                             txtDate.setText(s2);
+
+                            String dtc3 = data.getString("working_date");
+                            SimpleDateFormat readDate3 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+                            readDate3.setTimeZone(TimeZone.getTimeZone("GMT")); // missing line
+                            Date time = readDate3.parse(dtc3);
+                            SimpleDateFormat writeDate3 = new SimpleDateFormat("HH:mm");
+                            writeDate2.setTimeZone(TimeZone.getTimeZone("GMT+07:00"));
+                            txtTime.setText(writeDate3.format(time)+" WIB");
 
                             Glide.with(context)
                                     .load(data.getJSONObject("Jasa").getJSONObject("Sub_category").getString("img_url"))
