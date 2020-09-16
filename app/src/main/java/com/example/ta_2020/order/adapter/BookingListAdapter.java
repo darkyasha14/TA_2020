@@ -58,7 +58,7 @@ public class BookingListAdapter extends RecyclerView.Adapter<BookingListAdapter.
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        SimpleDateFormat writeDate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat writeDate = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         writeDate.setTimeZone(TimeZone.getTimeZone("GMT+07:00"));
         String s = writeDate.format(date);
         vholder.tvTimeNDate.setText(s);
