@@ -9,19 +9,19 @@ public class ExpandableListDataPump {
         HashMap<String, List<String>> expandableListDetail = new HashMap<String, List<String>>();
 
         List<String> bni= new ArrayList<String>();
-        bni.add("096055543");
+        bni.add("0904221060");
 
         List<String> mandiri = new ArrayList<String>();
-        mandiri.add("0987666767");
+        mandiri.add("09887654467");
 
         List<String> gopay = new ArrayList<String>();
-        gopay.add("08126744266");
+        gopay.add("081267426637");
 
         List<String> ovo = new ArrayList<String>();
-        ovo.add("08126744266");
+        ovo.add("081267426637");
 
         List<String> dana = new ArrayList<String>();
-        dana.add("08126744266s");
+        dana.add("081267426637");
 
         expandableListDetail.put("BNI", bni);
         expandableListDetail.put("mandiri", mandiri);
