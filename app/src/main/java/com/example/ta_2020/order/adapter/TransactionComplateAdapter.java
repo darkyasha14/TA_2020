@@ -16,7 +16,11 @@ import com.example.ta_2020.order.BookingDetailActivity;
 import com.example.ta_2020.order.TransactionComplateActivity;
 import com.example.ta_2020.order.model.TransactionComplate;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,7 +46,21 @@ public class TransactionComplateAdapter extends RecyclerView.Adapter<Transaction
     @Override
     public void onBindViewHolder(@NonNull vHolder vholder, final int i) {
         vholder.tvKode.setText("#"+dataBeans.get(i).getInvoice_no());
-        vholder.tvTimeNDate.setText(dataBeans.get(i).getCreatedAt());
+
+        String dtc = dataBeans.get(i).getCreatedAt();
+        SimpleDateFormat readDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        readDate.setTimeZone(TimeZone.getTimeZone("GMT")); // missing line
+        Date date = null;
+        try {
+            date = readDate.parse(dtc);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        SimpleDateFormat writeDate = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        writeDate.setTimeZone(TimeZone.getTimeZone("GMT+07:00"));
+        String s = writeDate.format(date);
+        vholder.tvTimeNDate.setText(s);
+
         vholder.tvMotode.setText(dataBeans.get(i).getBooking().getJasa().getJasa_name());
         vholder.tvTipe.setText(dataBeans.get(i).getBooking().getJasa().getSub_category().getSub_category_name());
         vholder.cvOrder.setOnClickListener(new View.OnClickListener() {
