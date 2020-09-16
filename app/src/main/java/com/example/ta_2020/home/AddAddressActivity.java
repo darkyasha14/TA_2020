@@ -95,7 +95,6 @@ public class AddAddressActivity extends AppCompatActivity {
 
                             String address = data.getString("address_id");
                             int id_add = Integer.parseInt(address);
-                            Toast.makeText(AddAddressActivity.this, ""+ id_add, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MakeOrderActivity.class);
                             PrefManager prefManager = new PrefManager(context);
                             prefManager.spAddress(PrefManager.SP_ID_ADDRESS, id_add);
@@ -110,7 +109,8 @@ public class AddAddressActivity extends AppCompatActivity {
                 }else{
                     try {
                         JSONObject jsonObject = new JSONObject(response.errorBody().string());
-                        Toast.makeText(AddAddressActivity.this, "" + jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddAddressActivity.this,
+                                "order is only available for padang city", Toast.LENGTH_SHORT).show();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -214,7 +214,7 @@ public class AddAddressActivity extends AppCompatActivity {
                             });
 
                         }else {
-                            Toast.makeText(getApplicationContext(), "" + jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "order is only available for padang city", Toast.LENGTH_LONG).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
