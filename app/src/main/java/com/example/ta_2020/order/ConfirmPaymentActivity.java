@@ -30,6 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.loader.content.CursorLoader;
 
+import com.bumptech.glide.Glide;
 import com.example.ta_2020.MainActivity;
 import com.example.ta_2020.PrefManager;
 import com.example.ta_2020.R;
@@ -44,12 +45,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Time;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -126,37 +130,68 @@ public class ConfirmPaymentActivity extends AppCompatActivity {
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         txtFormDate.setText(date);
 
-        txtFormDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                calendar = Calendar.getInstance();
-                final int day = calendar.get(Calendar.DAY_OF_MONTH);
-                final int month = calendar.get(Calendar.MONTH);
-                final int year = calendar.get(Calendar.YEAR);
+//        txtFormDate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                calendar = Calendar.getInstance();
+//                final int day = calendar.get(Calendar.DAY_OF_MONTH);
+//                final int month = calendar.get(Calendar.MONTH);
+//                final int year = calendar.get(Calendar.YEAR);
+//
+//                dialog = new DatePickerDialog(ConfirmPaymentActivity.this, new DatePickerDialog.OnDateSetListener() {
+//                    @Override
+//                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+//                        String bulan = "" + i1;
+//                        String tgl = "" + i2;
+//                        if (i1 < 10) {
+//                            bulan = "0" + (i1 + 1);
+//                        }
+//                        if (i2 < 10) {
+//                            tgl = "0" + i2;
+//                        }
+//                        txtFormDate.setText(i + "-" + bulan + "-" + tgl);
+//                    }
+//                }, year, month, day);
+//                dialog.show();
+//            }
+//        });
 
-                dialog = new DatePickerDialog(ConfirmPaymentActivity.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                        String bulan = "" + i1;
-                        String tgl = "" + i2;
-                        if (i1 < 10) {
-                            bulan = "0" + (i1 + 1);
-                        }
-                        if (i2 < 10) {
-                            tgl = "0" + i2;
-                        }
-                        txtFormDate.setText(i + "-" + bulan + "-" + tgl);
-                    }
-                }, year, month, day);
-                dialog.show();
-            }
-        });
+//        Intent intent = getIntent();
+//        final String invoice = intent.getStringExtra("eINVOICE");
+//        apiInterface.getBookingDetail(prefManager.getTokenUser(), invoice).enqueue(new Callback<ResponseBody>() {
+//            @Override
+//            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                if (response.isSuccessful()) {
+//                    try {
+//                        JSONObject jsonObject = new JSONObject(response.body().string());
+//                        if (jsonObject.getString("code").equals("0")) {
+//
+//                            JSONObject data = jsonObject.getJSONObject("data");
+//                            idInvoice.setText("#" + data.getString("invoice_no"));
+//
+//                            idTotalPrice.setText((NumberFormat.getCurrencyInstance(new Locale("in", "ID")).format(data.getJSONObject("Jasa").getInt("jasa_price")) + ""));
+//
+//                        }
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseBody> call, Throwable t) {
+//
+//            }
+//        });
 
         btnPaid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (imagePath == null){
-                    Toast.makeText(context, "Mohon upload bukti transfer", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Please upload proof of transfer", Toast.LENGTH_SHORT).show();
                 }else{
                     uploadImage();
                 }
