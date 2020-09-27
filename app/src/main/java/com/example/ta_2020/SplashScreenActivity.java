@@ -48,7 +48,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         alertDialog.setMessage(message);
 
-        alertDialog.setButton(-1,"RESTART", new DialogInterface.OnClickListener() {
+        alertDialog.setButton(-1,"Try Again", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
 
                 finish();
